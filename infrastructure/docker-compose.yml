@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.4.3
+    environment:
+      MYSQL_DATABASE: project_api
+      MYSQL_USER: project
+      MYSQL_PASSWORD: project
+      MYSQL_ROOT_PASSWORD: root
+    ports: ["3306:3306"]
+    volumes: ["mysql-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+volumes:
+  mysql-data:

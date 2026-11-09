@@ -1,0 +1,13 @@
+{
+  "name": "spring-rest-example",
+  "dataset": "WebFuzzing/Dataset",
+  "dataset_path": "jdk_17_maven/cs/rest/spring-rest-example",
+  "dataset_commit": "915859080da033fc36feae54bab3ad4a7b04e872",
+  "upstream": "https://github.com/phantasmicmeans/spring-boot-restful-api-example",
+  "language": "Java 17",
+  "build": "Maven",
+  "persistence": "MySQL via Spring Data JPA",
+  "authentication": "No authentication mechanism found in selected source",
+  "openapi_source": "Derived from selected source/controllers/Swagger annotations because no versioned openapi file was present; runtime endpoint is /v3/api-docs",
+  "validation_status": "static-only until SUT is started with configured MySQL"
+}

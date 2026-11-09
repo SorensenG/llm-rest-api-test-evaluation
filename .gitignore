@@ -1,0 +1,12 @@
+target/
+.generated-test-src/
+.pytest_cache/
+__pycache__/
+.DS_Store
+.env
+*.log
+responses/**/*.metadata.json
+results/execution-logs/*
+results/junit-reports/*
+!results/execution-logs/.gitkeep
+!results/junit-reports/.gitkeep

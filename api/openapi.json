@@ -1,0 +1,33 @@
+{
+  "openapi": "3.0.3",
+  "info": {"title": "spring-rest-example REST API", "version": "0.0.1", "description": "Specification reconstructed from the selected Web Fuzzing Dataset source and its Swagger annotations. The original project exposes /v3/api-docs at runtime."},
+  "servers": [{"url": "http://localhost:8080"}],
+  "paths": {
+    "/api/project": {"post": {"summary": "Create project", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProjectInput"}}}}, "responses": {"201": {"description": "Created"}, "400": {"description": "Invalid title"}}}},
+    "/api/project/{code}": {
+      "parameters": [{"$ref": "#/components/parameters/Code"}],
+      "get": {"summary": "Get project", "responses": {"200": {"description": "Project", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Project"}}}}, "400": {"description": "Invalid code"}, "404": {"description": "Not found"}}},
+      "delete": {"summary": "Delete project", "responses": {"200": {"description": "Deleted"}, "400": {"description": "Invalid code"}, "404": {"description": "Not found"}}},
+      "put": {"summary": "Update project", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProjectInput"}}}}, "responses": {"200": {"description": "Updated"}, "400": {"description": "Invalid code"}, "404": {"description": "Not found"}}}
+    },
+    "/api/problem/{code}": {
+      "parameters": [{"$ref": "#/components/parameters/Code"}],
+      "get": {"summary": "Get problems", "responses": {"200": {"description": "Problems", "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/Problem"}}}}}, "400": {"description": "Invalid code"}, "404": {"description": "Not found"}}},
+      "post": {"summary": "Create problem", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProblemInput"}}}}, "responses": {"201": {"description": "Created"}, "400": {"description": "Invalid input"}, "404": {"description": "Project not found"}}},
+      "delete": {"summary": "Delete all problems for code", "responses": {"200": {"description": "Deleted"}, "400": {"description": "Invalid code"}}}
+    },
+    "/api/problem/{code}/all": {"parameters": [{"$ref": "#/components/parameters/Code"}], "delete": {"summary": "Delete all problems and subproblems", "responses": {"200": {"description": "Deleted"}, "400": {"description": "Invalid code"}, "404": {"description": "Not found"}}}},
+    "/api/subproblem": {"post": {"summary": "Create subproblem", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/SubProblemInput"}}}}, "responses": {"201": {"description": "Created"}, "400": {"description": "Invalid content"}, "404": {"description": "Problem not found"}}}}
+  },
+  "components": {
+    "parameters": {"Code": {"name": "code", "in": "path", "required": true, "description": "Code validated by source as at least six characters.", "schema": {"type": "string", "minLength": 6}}},
+    "schemas": {
+      "ProjectInput": {"type": "object", "required": ["title"], "properties": {"title": {"type": "string", "description": "Source checks length greater than four on create."}}},
+      "Project": {"allOf": [{"$ref": "#/components/schemas/ProjectInput"}, {"type": "object", "properties": {"code": {"type": "string", "minLength": 6, "maxLength": 6}, "idx": {"type": "integer", "format": "int64"}, "problem": {"type": "array", "items": {"$ref": "#/components/schemas/Problem"}}}}]},
+      "ProblemInput": {"type": "object", "properties": {"title": {"type": "string"}}},
+      "Problem": {"allOf": [{"$ref": "#/components/schemas/ProblemInput"}, {"type": "object", "properties": {"idx": {"type": "integer", "format": "int64"}, "problemCode": {"type": "string", "minLength": 6, "maxLength": 6}}}]},
+      "SubProblemInput": {"type": "object", "required": ["content", "pro_idx"], "properties": {"content": {"type": "string", "description": "Source checks length greater than nine."}, "pro_idx": {"type": "integer", "format": "int64"}}},
+      "SubProblem": {"type": "object", "properties": {"idx": {"type": "integer", "format": "int64"}, "content": {"type": "string"}, "count": {"type": "integer", "format": "int64"}}}
+    }
+  }
+}

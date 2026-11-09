@@ -1,0 +1,58 @@
+# Avaliação Experimental de Modelos de Linguagem na Geração Automática de Testes para APIs RESTful
+
+Infraestrutura reproduzível para uma Iniciação Científica da UNICAMP que compara, sob o mesmo prompt e a mesma especificação OpenAPI, testes de integração black-box gerados por `gemini-3.6-flash` e `gpt-5.6-luna`.
+
+## Escopo e estado atual
+
+Este repositório prepara o experimento; as 20 respostas oficiais não são geradas aqui. Os diretórios `responses/`, `tests/` e `results/` estão prontos para receber dados coletados manualmente. Respostas originais devem ser preservadas sem edição.
+
+O SUT é `jdk_17_maven/cs/rest/spring-rest-example` do Web Fuzzing Dataset, no commit `915859080da033fc36feae54bab3ad4a7b04e872`. O projeto original requer MySQL e contém placeholders de credenciais; o procedimento de inicialização está em [`docs/execution-guide.md`](docs/execution-guide.md).
+
+## Requisitos
+
+- Java 17 e Maven 3.9+ (o projeto fixa Java 17; Java 26 local não substitui Java 17).
+- Python 3.10+.
+- Docker e Docker Compose.
+- `gh` autenticado apenas para publicação do repositório.
+
+## Preparação
+
+```bash
+python3 scripts/prepare_prompt.py
+python3 scripts/prepare_prompt.py --verify
+docker compose -f infrastructure/docker-compose.yml up -d mysql
+```
+
+Configure `API_BASE_URL` (padrão `http://localhost:8080`) e siga o guia de execução para compilar/iniciar o SUT original sem modificar seu comportamento.
+
+## Coleta manual
+
+Antes da coleta, confirme a disponibilidade e seleção exata dos dois modelos. Para cada conversa nova, cole o conteúdo de `prompts/generation.txt`, salve a primeira resposta integralmente em:
+
+```text
+responses/gemini-3.6-flash/run-01.txt
+responses/gpt-5.6-luna/run-01.txt
+```
+
+O prompt não deve ser alterado após a primeira geração oficial. Registre metadados no arquivo `.metadata.json` correspondente, usando o modelo de [`responses/metadata.example.json`](responses/metadata.example.json) e o hash produzido pelo script.
+
+## Extrair e executar um conjunto
+
+```bash
+python3 scripts/extract_java.py --model gemini-3.6-flash --run 01
+API_BASE_URL=http://localhost:8080 python3 scripts/run_one.py --model gemini-3.6-flash --run 01
+python3 scripts/run_all.py
+python3 scripts/summarize.py
+```
+
+`run_one.py` não corrige código, não adiciona imports e não ignora falhas. O teste de infraestrutura, quando usado, deve ficar separado de `tests/` e nunca entra nos CSVs científicos.
+
+## Resultados
+
+`individual-tests.csv` contém uma linha por método `@Test`, com classificações revisadas e causas baseadas em evidências. `summary.csv` contém uma linha por conjunto. `medians.csv` calcula medianas somente para valores presentes; campos pendentes não são convertidos em zero. A metodologia completa está em [`docs/experimental-protocol.md`](docs/experimental-protocol.md).
+
+## Reprodutibilidade e limitações
+
+O prompt final é montado literalmente com a especificação em `api/openapi.json`; o SHA-256 é impresso e salvo em `prompts/generation.sha256`. A interface de chat não permite controlar diretamente todos os parâmetros, como temperatura, e configurações internas das plataformas podem afetar as respostas. Nenhum modelo é presumido equivalente sem evidência experimental.
+
+Referências e links oficiais estão em [`docs/references.md`](docs/references.md). Limitações conhecidas estão em [`docs/limitations.md`](docs/limitations.md).
