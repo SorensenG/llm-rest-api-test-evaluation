@@ -5,7 +5,6 @@ __pycache__/
 .DS_Store
 .env
 *.log
-responses/**/*.metadata.json
 results/execution-logs/*
 results/junit-reports/*
 !results/execution-logs/.gitkeep
