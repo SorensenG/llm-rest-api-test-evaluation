@@ -7,4 +7,4 @@
 5. Verifique `curl -fsS "$API_BASE_URL/v3/api-docs"` e compare com `api/openapi.json`; diferenças devem ser registradas antes da coleta.
 6. Antes de cada conjunto, execute `python3 scripts/reset_api.py`. O reset recria o banco configurado pelo Compose; reinicie a aplicação se necessário para o schema ser recriado.
 
-Neste ambiente, Java 17 e Maven não estavam instalados e a inicialização dinâmica não foi declarada concluída. Não há resultados científicos gerados.
+Neste ambiente, Java 17 e Maven não estavam instalados. O daemon Docker também não estava ativo, então MySQL, SUT, acesso HTTP, reset de estado, teste manual de infraestrutura e relatórios Surefire não foram executados. Não há resultados científicos gerados.
