@@ -9,13 +9,22 @@ def main():
     if not src.exists(): raise SystemExit(f'original response not found: {src}')
     raw = src.read_text(encoding='utf-8')
     code = raw
-    fences = re.findall(r'```(?:java)?\s*\n?(.*?)```', raw, flags=re.S|re.I)
-    if fences: code = fences[0]
+    fence_matches = list(re.finditer(r'```(?:java)?\s*\n?', raw, flags=re.I))
+    if len(fence_matches) >= 2:
+        opening, closing = fence_matches[0], fence_matches[1]
+        # Some chat responses put imports/class declaration before the fence,
+        # the class body inside it, and the final brace after it. Reassemble
+        # those original segments; do not repair or synthesize Java.
+        code = raw[:opening.start()] + raw[opening.end():closing.start()] + raw[closing.end():]
+    elif len(fence_matches) == 1:
+        code = raw[fence_matches[0].end():]
+    if code.rstrip().endswith('```'):
+        code = code.rstrip()[:-3]
     if not code.strip(): raise SystemExit('response contains no extractable text')
     out = Path(a.output) if a.output else ROOT / 'tests' / a.model / f'run-{a.run:02d}.java'; out.parent.mkdir(parents=True, exist_ok=True); out.write_text(code, encoding='utf-8')
     try: source_name = str(src.relative_to(ROOT))
     except ValueError: source_name = str(src)
-    meta = {'model': a.model, 'run': a.run, 'source': source_name, 'response_sha256': hashlib.sha256(raw.encode()).hexdigest(), 'extracted_sha256': hashlib.sha256(code.encode()).hexdigest(), 'transformation': 'Removed only the first Markdown code fence delimiters if present; no code repair or import/assertion changes.'}
+    meta = {'model': a.model, 'run': a.run, 'source': source_name, 'response_sha256': hashlib.sha256(raw.encode()).hexdigest(), 'extracted_sha256': hashlib.sha256(code.encode()).hexdigest(), 'transformation': 'Removed Markdown fence delimiters; when the response split the original class across a fence, concatenated the original prefix, fenced body, and suffix. No code repair or import/assertion changes.'}
     (out.with_suffix('.metadata.json')).write_text(json.dumps(meta, indent=2) + '\n', encoding='utf-8')
     print(out)
 if __name__ == '__main__': main()

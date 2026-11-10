@@ -1,0 +1,8 @@
+{
+  "model": "gpt-6",
+  "run": 4,
+  "source": "responses/gpt-6/run-04.txt",
+  "response_sha256": "c83eab1a1d898a856a44ab03799c6e9496c8e928ba88df7ed2cf812bc42c4b35",
+  "extracted_sha256": "c83eab1a1d898a856a44ab03799c6e9496c8e928ba88df7ed2cf812bc42c4b35",
+  "transformation": "Removed Markdown fence delimiters; when the response split the original class across a fence, concatenated the original prefix, fenced body, and suffix. No code repair or import/assertion changes."
+}

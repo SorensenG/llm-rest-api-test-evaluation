@@ -1,0 +1,527 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.4)
+
+2026-11-10T12:26:00.630-03:00  INFO 63945 --- [           main] com.sw.project.ProjectApiApplication     : Starting ProjectApiApplication v0.0.1 using Java 17.0.21 with PID 63945 (/Users/sorenseng/Documents/ic/API/Dataset/jdk_17_maven/cs/rest/spring-rest-example/target/spring-rest-example-sut.jar started by sorenseng in /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa)
+2026-11-10T12:26:00.632-03:00  INFO 63945 --- [           main] com.sw.project.ProjectApiApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-11-10T12:26:01.014-03:00  INFO 63945 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-10T12:26:01.042-03:00  INFO 63945 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 3 JPA repository interfaces.
+2026-11-10T12:26:01.291-03:00  INFO 63945 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-11-10T12:26:01.295-03:00  INFO 63945 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-10T12:26:01.295-03:00  INFO 63945 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2026-11-10T12:26:01.330-03:00  INFO 63945 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-10T12:26:01.331-03:00  INFO 63945 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 678 ms
+2026-11-10T12:26:01.395-03:00  INFO 63945 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-10T12:26:01.417-03:00  INFO 63945 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2026-11-10T12:26:01.514-03:00  INFO 63945 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-10T12:26:01.595-03:00  INFO 63945 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@79b663b3
+2026-11-10T12:26:01.596-03:00  INFO 63945 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-10T12:26:01.616-03:00  INFO 63945 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+Hibernate: 
+    
+    create table problem (
+       idx bigint not null auto_increment,
+        title varchar(255),
+        code varchar(255) not null,
+        primary key (idx)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table project (
+       idx bigint not null auto_increment,
+        code varchar(6) not null,
+        title varchar(200) not null,
+        primary key (idx)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table subproblem (
+       idx bigint not null auto_increment,
+        content varchar(200) not null,
+        count bigint,
+        pro_idx bigint not null,
+        primary key (idx)
+    ) engine=InnoDB
+Hibernate: 
+    
+    alter table project 
+       drop index UK_eh3nusutt0qy84a4yr9pfxkyg
+Hibernate: 
+    
+    alter table project 
+       add constraint UK_eh3nusutt0qy84a4yr9pfxkyg unique (code)
+Hibernate: 
+    
+    alter table problem 
+       add constraint FK2xg62181e5b4uxtqme1t1b089 
+       foreign key (code) 
+       references project (code)
+Hibernate: 
+    
+    alter table subproblem 
+       add constraint FK49lfex91pi1k4qofqkcs681pl 
+       foreign key (pro_idx) 
+       references problem (idx)
+2026-11-10T12:26:01.952-03:00  INFO 63945 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-11-10T12:26:01.955-03:00  INFO 63945 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-10T12:26:02.182-03:00  WARN 63945 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-10T12:26:02.580-03:00  INFO 63945 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2026-11-10T12:26:02.592-03:00  INFO 63945 --- [           main] com.sw.project.ProjectApiApplication     : Started ProjectApiApplication in 2.154 seconds (process running for 2.355)
+2026-11-10T12:26:03.253-03:00  INFO 63945 --- [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-10T12:26:03.253-03:00  INFO 63945 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-10T12:26:03.253-03:00  INFO 63945 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-11-10T12:26:03.418-03:00  INFO 63945 --- [nio-8080-exec-2] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 149 ms
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        idx=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    insert 
+    into
+        project
+        (code, title) 
+    values
+        (?, ?)
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    insert 
+    into
+        project
+        (code, title) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        project
+        (code, title) 
+    values
+        (?, ?)
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        code=?
+Hibernate: 
+    DELETE 
+    FROM
+        problem 
+    WHERE
+        code=?
+2026-11-10T12:26:06.537-03:00 ERROR 63945 --- [nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null
+	at com.sw.project.controller.subProblemController.saveSubProblem(subProblemController.java:37) ~[classes!/:0.0.1]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:731) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        idx=?
+Hibernate: 
+    insert 
+    into
+        project
+        (code, title) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        p1_0.idx,
+        p1_0.code,
+        p1_0.title 
+    from
+        project p1_0 
+    where
+        p1_0.code=?
+2026-11-10T12:26:06.596-03:00  INFO 63945 --- [io-8080-exec-10] c.sw.project.service.ProjectServiceImpl  : Code !!
+Hibernate: 
+    insert 
+    into
+        project
+        (code, title) 
+    values
+        (?, ?)
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        idx=?
+Hibernate: 
+    insert 
+    into
+        project
+        (code, title) 
+    values
+        (?, ?)
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    select
+        p1_0.idx,
+        p1_0.code,
+        p1_0.title 
+    from
+        project p1_0 
+    where
+        p1_0.code=?
+2026-11-10T12:26:06.694-03:00  INFO 63945 --- [nio-8080-exec-8] c.sw.project.service.ProjectServiceImpl  : Code !!
+Hibernate: 
+    insert 
+    into
+        project
+        (code, title) 
+    values
+        (?, ?)
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+2026-11-10T12:26:06.743-03:00 ERROR 63945 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null
+	at com.sw.project.controller.subProblemController.saveSubProblem(subProblemController.java:37) ~[classes!/:0.0.1]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:731) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.6.jar!/:6.0.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.6.jar!/:6.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        idx=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    DELETE 
+    FROM
+        subproblem 
+    WHERE
+        pro_idx = (
+            SELECT
+                idx 
+            FROM
+                problem 
+            WHERE
+                code=?
+        )
+Hibernate: 
+    DELETE 
+    FROM
+        problem 
+    WHERE
+        code=?
+Hibernate: 
+    select
+        p1_0.idx,
+        p1_0.code,
+        p1_0.title 
+    from
+        project p1_0 
+    where
+        p1_0.code=?
+2026-11-10T12:26:06.808-03:00  INFO 63945 --- [io-8080-exec-10] c.sw.project.service.ProjectServiceImpl  : Code !!
+Hibernate: 
+    DELETE 
+    FROM
+        subproblem 
+    WHERE
+        pro_idx = (
+            SELECT
+                idx 
+            FROM
+                problem 
+            WHERE
+                code=?
+        )
+Hibernate: 
+    DELETE 
+    FROM
+        problem 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    insert 
+    into
+        project
+        (code, title) 
+    values
+        (?, ?)
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    DELETE 
+    FROM
+        problem 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        project 
+    WHERE
+        code=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        idx=?
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        problem 
+    WHERE
+        code=?

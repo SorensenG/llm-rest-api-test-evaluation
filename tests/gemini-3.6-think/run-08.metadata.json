@@ -1,0 +1,8 @@
+{
+  "model": "gemini-3.6-think",
+  "run": 8,
+  "source": "responses/gemini-3.6-think/run-08.txt",
+  "response_sha256": "364bee93efa1616fac1521e6cb718480f5cd987995808f7ebbe7cc8f6bc3941a",
+  "extracted_sha256": "1b0307ac7ad21a76600d801faee5687d59ae3acf07f8d0891b11649f8f0d2505",
+  "transformation": "Removed Markdown fence delimiters; when the response split the original class across a fence, concatenated the original prefix, fenced body, and suffix. No code repair or import/assertion changes."
+}

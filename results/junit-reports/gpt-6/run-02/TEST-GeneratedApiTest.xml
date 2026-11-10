@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="GeneratedApiTest" time="0.536" tests="58" errors="47" skipped="0" failures="1">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/target/test-classes:/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/target/classes:/Users/sorenseng/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/Users/sorenseng/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/sorenseng/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/sorenseng/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/sorenseng/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/sorenseng/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/Users/sorenseng/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/sorenseng/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/sorenseng/.m2/repository/io/rest-assured/rest-assured/5.4.0/rest-assured-5.4.0.jar:/Users/sorenseng/.m2/repository/org/apache/groovy/groovy/4.0.16/groovy-4.0.16.jar:/Users/sorenseng/.m2/repository/org/apache/groovy/groovy-xml/4.0.16/groovy-xml-4.0.16.jar:/Users/sorenseng/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/sorenseng/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/sorenseng/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/sorenseng/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar:/Users/sorenseng/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/sorenseng/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/sorenseng/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/sorenseng/.m2/repository/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar:/Users/sorenseng/.m2/repository/org/apache/groovy/groovy-json/4.0.16/groovy-json-4.0.16.jar:/Users/sorenseng/.m2/repository/io/rest-assured/rest-assured-common/5.4.0/rest-assured-common-5.4.0.jar:/Users/sorenseng/.m2/repository/io/rest-assured/xml-path/5.4.0/xml-path-5.4.0.jar:/Users/sorenseng/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:"/>
+    <property name="run" value="2"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="America/Sao_Paulo"/>
+    <property name="reports.dir" value="/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/results/junit-reports/gpt-6/run-02"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="model" value="gpt-6"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/target/surefire/surefirebooter-20261110122449274_3.jar /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/target/surefire 2026-11-10T12-24-49_246-jvmRun1 surefire-20261110122449274_1tmp surefire_0-20261110122449274_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/target/test-classes:/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/target/classes:/Users/sorenseng/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/Users/sorenseng/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/sorenseng/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/sorenseng/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/sorenseng/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/sorenseng/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/Users/sorenseng/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/sorenseng/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/sorenseng/.m2/repository/io/rest-assured/rest-assured/5.4.0/rest-assured-5.4.0.jar:/Users/sorenseng/.m2/repository/org/apache/groovy/groovy/4.0.16/groovy-4.0.16.jar:/Users/sorenseng/.m2/repository/org/apache/groovy/groovy-xml/4.0.16/groovy-xml-4.0.16.jar:/Users/sorenseng/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/sorenseng/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/sorenseng/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/sorenseng/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar:/Users/sorenseng/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/sorenseng/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/sorenseng/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/sorenseng/.m2/repository/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar:/Users/sorenseng/.m2/repository/org/apache/groovy/groovy-json/4.0.16/groovy-json-4.0.16.jar:/Users/sorenseng/.m2/repository/io/rest-assured/rest-assured-common/5.4.0/rest-assured-common-5.4.0.jar:/Users/sorenseng/.m2/repository/io/rest-assured/xml-path/5.4.0/xml-path-5.4.0.jar:/Users/sorenseng/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/sorenseng"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-10-20"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa"/>
+    <property name="java.vm.compressedOopsMode" value="Non-zero disjoint base"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/target/surefire/surefirebooter-20261110122449274_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.21+9"/>
+    <property name="user.name" value="sorenseng"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="27.0.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-17.0.21+9"/>
+    <property name="localRepository" value="/Users/sorenseng/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/c_/r72ywl8d6qv7457m5ghqgr5w0000gn/T/"/>
+    <property name="java.version" value="17.0.21"/>
+    <property name="user.dir" value="/Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/sorenseng/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.21+9"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="saveSubProblemWithNegativeProblemIndex" classname="GeneratedApiTest" time="0.059">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:57)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithNegativeProblemIndex(GeneratedApiTest.java:715)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="getProjectWithUnknownCode" classname="GeneratedApiTest" time="0.25"/>
+  <testcase name="createProjectWithMinimumLengthTitle" classname="GeneratedApiTest" time="0.002">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithMinimumLengthTitle(GeneratedApiTest.java:70)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="saveSubProblemWithLongContent" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithLongContent(GeneratedApiTest.java:693)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectDeleteRecentProblemAndVerifyRemainingProblems" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.createProjectDeleteRecentProblemAndVerifyRemainingProblems(GeneratedApiTest.java:877)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="getProjectWithSixCharacterCode" classname="GeneratedApiTest" time="0.008"/>
+  <testcase name="getProblemsWithInvalidCodeLength" classname="GeneratedApiTest" time="0.005"/>
+  <testcase name="saveSubProblemWithoutProblemIndex" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithoutProblemIndex(GeneratedApiTest.java:754)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="saveSubProblemWithoutContent" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithoutContent(GeneratedApiTest.java:740)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteAllProblemsWithInvalidCodeLength" classname="GeneratedApiTest" time="0.004"/>
+  <testcase name="updateProjectWithUnknownCode" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.updateProjectWithUnknownCode(GeneratedApiTest.java:307)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectWithValidTitle" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithValidTitle(GeneratedApiTest.java:59)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectAddProblemsRetrieveAndDeleteAll" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.createProjectAddProblemsRetrieveAndDeleteAll(GeneratedApiTest.java:832)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteMostRecentProblem" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.deleteMostRecentProblem(GeneratedApiTest.java:535)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectWithOptionalFields" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithOptionalFields(GeneratedApiTest.java:135)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectWithEmptyCode" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithEmptyCode(GeneratedApiTest.java:177)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="updateProjectWithOverlengthTitle" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.updateProjectWithOverlengthTitle(GeneratedApiTest.java:316)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteProblemWithUnknownProjectCode" classname="GeneratedApiTest" time="0.014"/>
+  <testcase name="getProblemsWithUnknownProjectCode" classname="GeneratedApiTest" time="0.014">
+    <failure message="1 expectation failed.&#10;Expected status code (is &lt;200&gt; or is &lt;404&gt;) but was &lt;501&gt;.&#10;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: 
+1 expectation failed.
+Expected status code (is <200> or is <404>) but was <501>.
+
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:57)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:512)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:696)
+	at io.restassured.internal.ResponseSpecificationImpl.this$2$validateResponseIfRequired(ResponseSpecificationImpl.groovy)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:198)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:62)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:135)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:84)
+	at GeneratedApiTest.getProblemsWithUnknownProjectCode(GeneratedApiTest.java:520)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></failure>
+  </testcase>
+  <testcase name="createProjectWithCodeExceedingMaximumLength" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithCodeExceedingMaximumLength(GeneratedApiTest.java:163)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectWithMaximumLengthTitle" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithMaximumLengthTitle(GeneratedApiTest.java:81)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProblemWithEmptyTitle" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.createProblemWithEmptyTitle(GeneratedApiTest.java:404)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteProjectTwice" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.deleteProjectTwice(GeneratedApiTest.java:352)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="saveSubProblemWithEmptyContent" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithEmptyContent(GeneratedApiTest.java:682)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createRetrieveUpdateAndDeleteProjectLifecycle" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.createRetrieveUpdateAndDeleteProjectLifecycle(GeneratedApiTest.java:804)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProblemWithUnknownProjectCode" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProblemWithUnknownProjectCode(GeneratedApiTest.java:435)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteProblemWithoutExistingProblems" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.deleteProblemWithoutExistingProblems(GeneratedApiTest.java:556)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProblemWithoutTitle" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.createProblemWithoutTitle(GeneratedApiTest.java:418)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="updateProjectWithEmptyTitle" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.updateProjectWithEmptyTitle(GeneratedApiTest.java:276)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteExistingProject" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.deleteExistingProject(GeneratedApiTest.java:330)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteAllProblemsWithUnknownProjectCode" classname="GeneratedApiTest" time="0.007"/>
+  <testcase name="saveSubProblemWithMaximumLongIndex" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithMaximumLongIndex(GeneratedApiTest.java:726)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="saveSubProblemWithInvalidIndexType" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithInvalidIndexType(GeneratedApiTest.java:795)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="saveSubProblemWithEmptyBody" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithEmptyBody(GeneratedApiTest.java:765)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProblemForExistingProject" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.createProblemForExistingProject(GeneratedApiTest.java:371)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="updateProjectWithMaximumLengthTitle" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.updateProjectWithMaximumLengthTitle(GeneratedApiTest.java:262)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteAllProblemsForProjectWithoutProblems" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.deleteAllProblemsForProjectWithoutProblems(GeneratedApiTest.java:608)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="saveSubProblemWithValidBody" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithValidBody(GeneratedApiTest.java:671)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createMultipleProblemsForSameProject" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.createMultipleProblemsForSameProject(GeneratedApiTest.java:456)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="saveSubProblemWithNullFields" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithNullFields(GeneratedApiTest.java:780)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="saveSubProblemWithZeroProblemIndex" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.saveSubProblemWithZeroProblemIndex(GeneratedApiTest.java:704)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="getProblemsForProjectWithoutProblems" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.getProblemsForProjectWithoutProblems(GeneratedApiTest.java:502)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteAllProblemsAndVerifyEmptyList" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.deleteAllProblemsAndVerifyEmptyList(GeneratedApiTest.java:640)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="getProjectWithShortCode" classname="GeneratedApiTest" time="0.005"/>
+  <testcase name="getProjectWithLongCode" classname="GeneratedApiTest" time="0.005"/>
+  <testcase name="createProblemWithAllOptionalFields" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.createProblemWithAllOptionalFields(GeneratedApiTest.java:385)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="updateExistingProject" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.updateExistingProject(GeneratedApiTest.java:248)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectWithTitleExceedingMaximumLength" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithTitleExceedingMaximumLength(GeneratedApiTest.java:92)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectWithMaximumLengthCode" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithMaximumLengthCode(GeneratedApiTest.java:149)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectWithoutTitle" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithoutTitle(GeneratedApiTest.java:105)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="createProjectWithNullTitle" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProjectWithNullTitle(GeneratedApiTest.java:119)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="getProjectWithEmptyCode" classname="GeneratedApiTest" time="0.008"/>
+  <testcase name="createProblemWithInvalidCodeLength" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProblemWithInvalidCodeLength(GeneratedApiTest.java:447)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="updateProjectWithoutTitle" classname="GeneratedApiTest" time="0.001">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.updateProjectWithoutTitle(GeneratedApiTest.java:290)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="getProblemsForProject" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.getProblemsForProject(GeneratedApiTest.java:479)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="deleteProjectWithUnknownCode" classname="GeneratedApiTest" time="0.025"/>
+  <testcase name="deleteAllProblemsForProject" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.deleteAllProblemsForProject(GeneratedApiTest.java:578)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="getProjectWithValidCode" classname="GeneratedApiTest" time="0.0">
+    <error message="Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath." type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor36.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.mapping.ObjectMapping.serialize(ObjectMapping.groovy:164)
+	at io.restassured.internal.mapping.ObjectMapping$serialize.call(Unknown Source)
+	at io.restassured.internal.RequestSpecificationImpl.body(RequestSpecificationImpl.groovy:770)
+	at GeneratedApiTest.createProject(GeneratedApiTest.java:46)
+	at GeneratedApiTest.getProjectWithValidCode(GeneratedApiTest.java:186)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+</testsuite>

@@ -1,0 +1,323 @@
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+public class GeneratedApiTest {
+
+@BeforeAll
+public static void setup() {
+    String baseUrl = System.getenv("API_BASE_URL");
+    if (baseUrl == null || baseUrl.trim().isEmpty()) {
+        baseUrl = System.getProperty("API_BASE_URL", "http://localhost:8080");
+    }
+    RestAssured.baseURI = baseUrl;
+}
+
+@Test
+public void testCreateProjectSuccess() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "title": "Valid Project Title"
+            }
+            """)
+    .when()
+        .post("/api/project")
+    .then()
+        .statusCode(201);
+}
+
+@Test
+public void testCreateProjectBoundaryTitleLengthFour() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "title": "Four"
+            }
+            """)
+    .when()
+        .post("/api/project")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testCreateProjectBoundaryTitleLengthFive() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "title": "Five5"
+            }
+            """)
+    .when()
+        .post("/api/project")
+    .then()
+        .statusCode(201);
+}
+
+@Test
+public void testGetProjectInvalidCodeLength() {
+    given()
+    .when()
+        .get("/api/project/12345")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testGetProjectNotFound() {
+    given()
+    .when()
+        .get("/api/project/NOTFOUND123")
+    .then()
+        .statusCode(404);
+}
+
+@Test
+public void testUpdateProjectInvalidCodeLength() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "title": "Updated Title"
+            }
+            """)
+    .when()
+        .put("/api/project/12345")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testUpdateProjectNotFound() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "title": "Updated Title"
+            }
+            """)
+    .when()
+        .put("/api/project/NOTFOUND123")
+    .then()
+        .statusCode(404);
+}
+
+@Test
+public void testDeleteProjectInvalidCodeLength() {
+    given()
+    .when()
+        .delete("/api/project/12345")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testDeleteProjectNotFound() {
+    given()
+    .when()
+        .delete("/api/project/NOTFOUND123")
+    .then()
+        .statusCode(404);
+}
+
+@Test
+public void testGetProblemsInvalidCodeLength() {
+    given()
+    .when()
+        .get("/api/problem/12345")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testGetProblemsNotFound() {
+    given()
+    .when()
+        .get("/api/problem/NOTFOUND123")
+    .then()
+        .statusCode(404);
+}
+
+@Test
+public void testCreateProblemInvalidCodeLength() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "title": "Problem Title"
+            }
+            """)
+    .when()
+        .post("/api/problem/12345")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testCreateProblemProjectNotFound() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "title": "Problem Title"
+            }
+            """)
+    .when()
+        .post("/api/problem/NOTFOUND123")
+    .then()
+        .statusCode(404);
+}
+
+@Test
+public void testDeleteProblemsInvalidCodeLength() {
+    given()
+    .when()
+        .delete("/api/problem/12345")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testDeleteProblemsAllInvalidCodeLength() {
+    given()
+    .when()
+        .delete("/api/problem/12345/all")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testDeleteProblemsAllNotFound() {
+    given()
+    .when()
+        .delete("/api/problem/NOTFOUND123/all")
+    .then()
+        .statusCode(404);
+}
+
+@Test
+public void testCreateSubProblemBoundaryContentLengthNine() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "content": "123456789",
+                "pro_idx": 1
+            }
+            """)
+    .when()
+        .post("/api/subproblem")
+    .then()
+        .statusCode(400);
+}
+
+@Test
+public void testCreateSubProblemProblemNotFound() {
+    given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "content": "1234567890",
+                "pro_idx": 999999999
+            }
+            """)
+    .when()
+        .post("/api/subproblem")
+    .then()
+        .statusCode(404);
+}
+
+@Test
+public void testMultiEndpointLifecycleScenario() {
+    Response createProjectResponse = given()
+        .contentType(ContentType.JSON)
+        .body("""
+            {
+                "title": "Multi Endpoint Test Project"
+            }
+            """)
+    .when()
+        .post("/api/project")
+    .then()
+        .statusCode(201)
+        .extract().response();
+
+    String code = createProjectResponse.jsonPath().getString("code");
+    if (code != null && !code.isEmpty()) {
+        given()
+        .when()
+            .get("/api/project/" + code)
+        .then()
+            .statusCode(200);
+
+        given()
+            .contentType(ContentType.JSON)
+            .body("""
+                {
+                    "title": "Updated Multi Endpoint Title"
+                }
+                """)
+        .when()
+            .put("/api/project/" + code)
+        .then()
+            .statusCode(200);
+
+        given()
+            .contentType(ContentType.JSON)
+            .body("""
+                {
+                    "title": "Multi Endpoint Problem"
+                }
+                """)
+        .when()
+            .post("/api/problem/" + code)
+        .then()
+            .statusCode(201);
+
+        Response problemsResponse = given()
+        .when()
+            .get("/api/problem/" + code)
+        .then()
+            .statusCode(200)
+            .extract().response();
+
+        Long problemIdx = problemsResponse.jsonPath().getLong("[0].idx");
+        if (problemIdx != null && problemIdx > 0) {
+            given()
+                .contentType(ContentType.JSON)
+                .body(String.format("""
+                    {
+                        "content": "Valid subproblem content greater than nine",
+                        "pro_idx": %d
+                    }
+                    """, problemIdx))
+            .when()
+                .post("/api/subproblem")
+            .then()
+                .statusCode(201);
+        }
+
+        given()
+        .when()
+            .delete("/api/problem/" + code + "/all")
+        .then()
+            .statusCode(200);
+
+        given()
+        .when()
+            .delete("/api/project/" + code)
+        .then()
+            .statusCode(200);
+    }
+}
+
+}

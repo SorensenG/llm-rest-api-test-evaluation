@@ -25,12 +25,20 @@ def main():
     else:
         print(json.dumps({'model': a.model, 'run': a.run, 'status': 'infrastructure_failure', 'exit_code': INFRASTRUCTURE_FAILURE}))
         sys.exit(INFRASTRUCTURE_FAILURE)
+    # Remove only build/output artifacts from the previous set. The response and
+    # extracted source remain untouched; this prevents stale classes/reports from
+    # being observed when the current generated source does not compile.
+    build = ROOT / 'target'
+    if build.exists(): shutil.rmtree(build)
     gen = ROOT / '.generated-test-src'; gen.mkdir(exist_ok=True)
     for p in gen.glob('*.java'): p.unlink()
     shutil.copy2(source, gen / 'GeneratedApiTest.java')
     env = os.environ.copy(); env.update({'API_BASE_URL': base, 'model': a.model, 'run': f'{a.run:02d}'})
-    logdir = Path(a.log_dir).resolve() if a.log_dir else ROOT / 'results/execution-logs' / a.model / f'run-{a.run:02d}'; logdir.mkdir(parents=True, exist_ok=True)
-    reports = Path(a.reports_dir).resolve() if a.reports_dir else ROOT / 'results/junit-reports' / a.model / f'run-{a.run:02d}'; reports.mkdir(parents=True, exist_ok=True)
+    logdir = Path(a.log_dir).resolve() if a.log_dir else ROOT / 'results/execution-logs' / a.model / f'run-{a.run:02d}'
+    reports = Path(a.reports_dir).resolve() if a.reports_dir else ROOT / 'results/junit-reports' / a.model / f'run-{a.run:02d}'
+    for output_dir in (logdir, reports):
+        if output_dir.exists(): shutil.rmtree(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
     result = subprocess.run(['mvn', '-q', 'test', '-Dmodel='+a.model, '-Drun='+str(a.run), '-Dreports.dir='+str(reports)], cwd=ROOT, env=env, text=True, capture_output=True)
     (logdir/'stdout.txt').write_text(result.stdout, encoding='utf-8'); (logdir/'stderr.txt').write_text(result.stderr, encoding='utf-8')
     (logdir/'exit-code.txt').write_text(str(result.returncode)+'\n', encoding='utf-8')
