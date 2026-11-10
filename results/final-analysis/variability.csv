@@ -1,0 +1,17 @@
+model,metric,n_observations,minimum,maximum,median,iqr
+gemini-3.6-think,total_tests,10,19.0,25.0,21.0,2.0
+gemini-3.6-think,syntactically_valid_count,8,19.0,25.0,21.0,3.0
+gemini-3.6-think,syntactically_valid_pct,8,100.0,100.0,100.0,0.0
+gemini-3.6-think,executable_count,8,17.0,20.0,20.0,2.5
+gemini-3.6-think,executable_pct,8,80.0,95.24,89.87,12.739999999999995
+gemini-3.6-think,approved_count,8,14.0,17.0,15.0,1.5
+gemini-3.6-think,approved_pct,8,60.0,80.95,70.715,14.950000000000003
+gemini-3.6-think,approved_among_executable_pct,8,75.0,85.0,82.35,9.164999999999992
+gpt-6,total_tests,10,54.0,72.0,57.5,9.0
+gpt-6,syntactically_valid_count,10,54.0,72.0,57.5,9.0
+gpt-6,syntactically_valid_pct,10,100.0,100.0,100.0,0.0
+gpt-6,executable_count,10,54.0,72.0,57.5,9.0
+gpt-6,executable_pct,10,100.0,100.0,100.0,0.0
+gpt-6,approved_count,10,3.0,34.0,18.0,13.0
+gpt-6,approved_pct,10,5.56,55.74,30.73,27.58
+gpt-6,approved_among_executable_pct,10,5.56,55.74,30.73,27.58
