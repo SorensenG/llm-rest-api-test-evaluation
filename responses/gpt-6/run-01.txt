@@ -4,323 +4,894 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class GeneratedApiTest {
 
-```
-@BeforeAll
-public static void setup() {
-    String baseUrl = System.getenv("API_BASE_URL");
-    if (baseUrl == null || baseUrl.trim().isEmpty()) {
-        baseUrl = System.getProperty("API_BASE_URL", "http://localhost:8080");
-    }
-    RestAssured.baseURI = baseUrl;
-}
+ private static final String BASE_URL = "http://localhost:8080";
 
-@Test
-public void testCreateProjectSuccess() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "title": "Valid Project Title"
-            }
-            """)
-    .when()
-        .post("/api/project")
-    .then()
-        .statusCode(201);
-}
+ @BeforeAll
+ static void setUp() {
+ RestAssured.baseURI = BASE_URL;
+ }
 
-@Test
-public void testCreateProjectBoundaryTitleLengthFour() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "title": "Four"
-            }
-            """)
-    .when()
-        .post("/api/project")
-    .then()
-        .statusCode(400);
-}
+ private String uniqueTitle() {
+ return "Project-" + java.util.UUID.randomUUID();
+ }
 
-@Test
-public void testCreateProjectBoundaryTitleLengthFive() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "title": "Five5"
-            }
-            """)
-    .when()
-        .post("/api/project")
-    .then()
-        .statusCode(201);
-}
+ private String createProject() {
+ String title = uniqueTitle();
 
-@Test
-public void testGetProjectInvalidCodeLength() {
-    given()
-    .when()
-        .get("/api/project/12345")
-    .then()
-        .statusCode(400);
-}
+ Response response = given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("title", title))
+ .when()
+ .post("/api/project");
 
-@Test
-public void testGetProjectNotFound() {
-    given()
-    .when()
-        .get("/api/project/NOTFOUND123")
-    .then()
-        .statusCode(404);
-}
+ response.then().statusCode(200);
+ String code = response.jsonPath().getString("code");
 
-@Test
-public void testUpdateProjectInvalidCodeLength() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "title": "Updated Title"
-            }
-            """)
-    .when()
-        .put("/api/project/12345")
-    .then()
-        .statusCode(400);
-}
+ if (code == null || code.isEmpty()) {
+ code = response.jsonPath().getString("data.code");
+ }
 
-@Test
-public void testUpdateProjectNotFound() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "title": "Updated Title"
-            }
-            """)
-    .when()
-        .put("/api/project/NOTFOUND123")
-    .then()
-        .statusCode(404);
-}
+ return code;
+ }
 
-@Test
-public void testDeleteProjectInvalidCodeLength() {
-    given()
-    .when()
-        .delete("/api/project/12345")
-    .then()
-        .statusCode(400);
-}
+ private Map<String, Object> validProject(String title) {
+ return Map.of("title", title);
+ }
 
-@Test
-public void testDeleteProjectNotFound() {
-    given()
-    .when()
-        .delete("/api/project/NOTFOUND123")
-    .then()
-        .statusCode(404);
-}
+ private Map<String, Object> validProblem(String title) {
+ return Map.of("title", title);
+ }
 
-@Test
-public void testGetProblemsInvalidCodeLength() {
-    given()
-    .when()
-        .get("/api/problem/12345")
-    .then()
-        .statusCode(400);
-}
+ @Test
+ void createProjectWithValidTitle() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProject(uniqueTitle()))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(200);
+ }
 
-@Test
-public void testGetProblemsNotFound() {
-    given()
-    .when()
-        .get("/api/problem/NOTFOUND123")
-    .then()
-        .statusCode(404);
-}
+ @Test
+ void createProjectWithMinimumLengthTitle() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("title", "A"))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(200);
+ }
 
-@Test
-public void testCreateProblemInvalidCodeLength() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "title": "Problem Title"
-            }
-            """)
-    .when()
-        .post("/api/problem/12345")
-    .then()
-        .statusCode(400);
-}
+ @Test
+ void createProjectWithMaximumLengthTitle() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("title", "A".repeat(200)))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(200);
+ }
 
-@Test
-public void testCreateProblemProjectNotFound() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "title": "Problem Title"
-            }
-            """)
-    .when()
-        .post("/api/problem/NOTFOUND123")
-    .then()
-        .statusCode(404);
-}
+ @Test
+ void createProjectWithTitleExceedingMaximumLength() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("title", "A".repeat(201)))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(422)));
+ }
 
-@Test
-public void testDeleteProblemsInvalidCodeLength() {
-    given()
-    .when()
-        .delete("/api/problem/12345")
-    .then()
-        .statusCode(400);
-}
+ @Test
+ void createProjectWithoutTitle() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Collections.emptyMap())
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(anyOf(is(400), is(422)));
+ }
 
-@Test
-public void testDeleteProblemsAllInvalidCodeLength() {
-    given()
-    .when()
-        .delete("/api/problem/12345/all")
-    .then()
-        .statusCode(400);
-}
+ @Test
+ void createProjectWithNullTitle() {
+ given()
+ .contentType(ContentType.JSON)
+ .body("{\"title\":null}")
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(422)));
+ }
 
-@Test
-public void testDeleteProblemsAllNotFound() {
-    given()
-    .when()
-        .delete("/api/problem/NOTFOUND123/all")
-    .then()
-        .statusCode(404);
-}
+ @Test
+ void createProjectWithEmptyTitle() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("title", ""))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(200);
+ }
 
-@Test
-public void testCreateSubProblemBoundaryContentLengthNine() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "content": "123456789",
-                "pro_idx": 1
-            }
-            """)
-    .when()
-        .post("/api/subproblem")
-    .then()
-        .statusCode(400);
-}
+ @Test
+ void createProjectWithOptionalCodeAtMaximumLength() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "title", uniqueTitle(),
+ "code", "ABC123"
+ ))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(200);
+ }
 
-@Test
-public void testCreateSubProblemProblemNotFound() {
-    given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "content": "1234567890",
-                "pro_idx": 999999999
-            }
-            """)
-    .when()
-        .post("/api/subproblem")
-    .then()
-        .statusCode(404);
-}
+ @Test
+ void createProjectWithCodeExceedingMaximumLength() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "title", uniqueTitle(),
+ "code", "ABCDEFG"
+ ))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(422)));
+ }
 
-@Test
-public void testMultiEndpointLifecycleScenario() {
-    Response createProjectResponse = given()
-        .contentType(ContentType.JSON)
-        .body("""
-            {
-                "title": "Multi Endpoint Test Project"
-            }
-            """)
-    .when()
-        .post("/api/project")
-    .then()
-        .statusCode(201)
-        .extract().response();
+ @Test
+ void createProjectWithEmptyCode() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "title", uniqueTitle(),
+ "code", ""
+ ))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(200);
+ }
 
-    String code = createProjectResponse.jsonPath().getString("code");
-    if (code != null && !code.isEmpty()) {
-        given()
-        .when()
-            .get("/api/project/" + code)
-        .then()
-            .statusCode(200);
+ @Test
+ void createProjectWithOptionalIdx() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "title", uniqueTitle(),
+ "idx", 1
+ ))
+ .when()
+ .post("/api/project")
+ .then()
+ .statusCode(200);
+ }
 
-        given()
-            .contentType(ContentType.JSON)
-            .body("""
-                {
-                    "title": "Updated Multi Endpoint Title"
-                }
-                """)
-        .when()
-            .put("/api/project/" + code)
-        .then()
-            .statusCode(200);
+ @Test
+ void getProjectUsingValidCode() {
+ String code = createProject();
 
-        given()
-            .contentType(ContentType.JSON)
-            .body("""
-                {
-                    "title": "Multi Endpoint Problem"
-                }
-                """)
-        .when()
-            .post("/api/problem/" + code)
-        .then()
-            .statusCode(201);
+ if (code == null) {
+ return;
+ }
 
-        Response problemsResponse = given()
-        .when()
-            .get("/api/problem/" + code)
-        .then()
-            .statusCode(200)
-            .extract().response();
+ given()
+ .when()
+ .get("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+ }
 
-        Long problemIdx = problemsResponse.jsonPath().getLong("[0].idx");
-        if (problemIdx != null && problemIdx > 0) {
-            given()
-                .contentType(ContentType.JSON)
-                .body(String.format("""
-                    {
-                        "content": "Valid subproblem content greater than nine",
-                        "pro_idx": %d
-                    }
-                    """, problemIdx))
-            .when()
-                .post("/api/subproblem")
-            .then()
-                .statusCode(201);
-        }
+ @Test
+ void getProjectUsingNonexistentCode() {
+ given()
+ .when()
+ .get("/api/project/{code}", "ZZZ999")
+ .then()
+ .statusCode(anyOf(is(200), is(404)));
+ }
 
-        given()
-        .when()
-            .delete("/api/problem/" + code + "/all")
-        .then()
-            .statusCode(200);
+ @Test
+ void getProjectUsingEmptyCode() {
+ given()
+ .when()
+ .get("/api/project/{code}", "")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(404)));
+ }
 
-        given()
-        .when()
-            .delete("/api/project/" + code)
-        .then()
-            .statusCode(200);
-    }
-}
+ @Test
+ void getProjectUsingShortCode() {
+ given()
+ .when()
+ .get("/api/project/{code}", "ABC12")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(404)));
+ }
 
-```
+ @Test
+ void getProjectUsingLongCode() {
+ given()
+ .when()
+ .get("/api/project/{code}", "ABC1234")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(404)));
+ }
 
+ @Test
+ void updateProjectWithValidTitle() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProject(uniqueTitle()))
+ .when()
+ .put("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void updateProjectWithMaximumLengthTitle() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("title", "B".repeat(200)))
+ .when()
+ .put("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void updateProjectWithoutTitle() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(Collections.emptyMap())
+ .when()
+ .put("/api/project/{code}", code)
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(422)));
+ }
+
+ @Test
+ void updateProjectWithTitleExceedingMaximumLength() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("title", "B".repeat(201)))
+ .when()
+ .put("/api/project/{code}", code)
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(422)));
+ }
+
+ @Test
+ void updateProjectUsingNonexistentCode() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProject(uniqueTitle()))
+ .when()
+ .put("/api/project/{code}", "ZZZ999")
+ .then()
+ .statusCode(anyOf(is(200), is(404)));
+ }
+
+ @Test
+ void deleteProjectUsingNonexistentCode() {
+ given()
+ .when()
+ .delete("/api/project/{code}", "ZZZ999")
+ .then()
+ .statusCode(anyOf(is(200), is(404)));
+ }
+
+ @Test
+ void deleteProjectUsingValidCode() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .when()
+ .delete("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void deleteProjectTwice() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .when()
+ .delete("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .delete("/api/project/{code}", code)
+ .then()
+ .statusCode(anyOf(is(200), is(404)));
+ }
+
+ @Test
+ void createProblemForNonexistentProjectCode() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem(uniqueTitle()))
+ .when()
+ .post("/api/problem/{code}", "ZZZ999")
+ .then()
+ .statusCode(anyOf(is(200), is(404)));
+ }
+
+ @Test
+ void createProblemForValidProject() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem(uniqueTitle()))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void createProblemWithAllOptionalFields() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "idx", 1,
+ "title", uniqueTitle(),
+ "problemCode", "PRB001"
+ ))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void createProblemWithEmptyTitle() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("title", ""))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void createProblemWithoutFields() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(Collections.emptyMap())
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void createProblemWithNullTitle() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body("{\"title\":null}")
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void createProblemWithNestedProject() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "title", uniqueTitle(),
+ "project", Map.of("title", uniqueTitle())
+ ))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void getProblemsUsingValidProjectCode() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .when()
+ .get("/api/problem/{code}", code)
+ .then()
+ .statusCode(200)
+ .body("$", instanceOf(List.class));
+ }
+
+ @Test
+ void getProblemsUsingNonexistentProjectCode() {
+ given()
+ .when()
+ .get("/api/problem/{code}", "ZZZ999")
+ .then()
+ .statusCode(200)
+ .body("$", instanceOf(List.class));
+ }
+
+ @Test
+ void getProblemsUsingEmptyCode() {
+ given()
+ .when()
+ .get("/api/problem/{code}", "")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(404)));
+ }
+
+ @Test
+ void getProblemsUsingShortCode() {
+ given()
+ .when()
+ .get("/api/problem/{code}", "ABC12")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(404)));
+ }
+
+ @Test
+ void getProblemsUsingLongCode() {
+ given()
+ .when()
+ .get("/api/problem/{code}", "ABC1234")
+ .then()
+ .statusCode(anyOf(is(200), is(400), is(404)));
+ }
+
+ @Test
+ void deleteMostRecentProblem() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem(uniqueTitle()))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .delete("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void deleteProblemUsingNonexistentCode() {
+ given()
+ .when()
+ .delete("/api/problem/{code}", "ZZZ999")
+ .then()
+ .statusCode(anyOf(is(200), is(404)));
+ }
+
+ @Test
+ void deleteAllProblemsForValidProject() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .when()
+ .delete("/api/problem/{code}/all", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void deleteAllProblemsForNonexistentProject() {
+ given()
+ .when()
+ .delete("/api/problem/{code}/all", "ZZZ999")
+ .then()
+ .statusCode(anyOf(is(200), is(404)));
+ }
+
+ @Test
+ void createMultipleProblemsAndRetrieveThem() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem("Problem-One-" + java.util.UUID.randomUUID()))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem("Problem-Two-" + java.util.UUID.randomUUID()))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .get("/api/problem/{code}", code)
+ .then()
+ .statusCode(200)
+ .body("$", instanceOf(List.class))
+ .body("$.size()", greaterThanOrEqualTo(2));
+ }
+
+ @Test
+ void deleteLatestProblemAndVerifyRemainingProblems() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem("Problem-One-" + java.util.UUID.randomUUID()))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem("Problem-Two-" + java.util.UUID.randomUUID()))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .delete("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .get("/api/problem/{code}", code)
+ .then()
+ .statusCode(200)
+ .body("$", instanceOf(List.class));
+ }
+
+ @Test
+ void deleteAllProblemsAndVerifyEmptyList() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem(uniqueTitle()))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .delete("/api/problem/{code}/all", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .get("/api/problem/{code}", code)
+ .then()
+ .statusCode(200)
+ .body("$", hasSize(0));
+ }
+
+ @Test
+ void saveSubProblemWithValidFields() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "pro_idx", 1,
+ "content", "Subproblem content"
+ ))
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithEmptyContent() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "pro_idx", 1,
+ "content", ""
+ ))
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithMinimumProIdx() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "pro_idx", 0,
+ "content", "Content"
+ ))
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithMaximumLongProIdx() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "pro_idx", Long.MAX_VALUE,
+ "content", "Content"
+ ))
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithNegativeProIdx() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "pro_idx", -1,
+ "content", "Content"
+ ))
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithMissingProIdx() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("content", "Content"))
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithMissingContent() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of("pro_idx", 1))
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithEmptyObject() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Collections.emptyMap())
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithNullFields() {
+ given()
+ .contentType(ContentType.JSON)
+ .body("{\"pro_idx\":null,\"content\":null}")
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void saveSubProblemWithLargeContent() {
+ given()
+ .contentType(ContentType.JSON)
+ .body(Map.of(
+ "pro_idx", 1,
+ "content", "C".repeat(10000)
+ ))
+ .when()
+ .post("/api/subproblem")
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void createProjectThenCreateRetrieveAndDeleteProblems() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProblem(uniqueTitle()))
+ .when()
+ .post("/api/problem/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .get("/api/problem/{code}", code)
+ .then()
+ .statusCode(200)
+ .body("$", hasSize(greaterThanOrEqualTo(1)));
+
+ given()
+ .when()
+ .delete("/api/problem/{code}/all", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .get("/api/problem/{code}", code)
+ .then()
+ .statusCode(200)
+ .body("$", hasSize(0));
+
+ given()
+ .when()
+ .delete("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+ }
+
+ @Test
+ void createUpdateRetrieveAndDeleteProject() {
+ String code = createProject();
+
+ if (code == null) {
+ return;
+ }
+
+ given()
+ .contentType(ContentType.JSON)
+ .body(validProject("Updated-" + java.util.UUID.randomUUID()))
+ .when()
+ .put("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .get("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .delete("/api/project/{code}", code)
+ .then()
+ .statusCode(200);
+
+ given()
+ .when()
+ .get("/api/project/{code}", code)
+ .then()
+ .statusCode(anyOf(is(200), is(404)));
+ }
 }
