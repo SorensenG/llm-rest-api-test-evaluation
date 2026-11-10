@@ -39,6 +39,8 @@ O prompt fixo está em `prompts/ai-judge.template.txt` (SHA-256 `b118d8cbc5536e6
 5. Reavaliar independentemente casos `LOW` confidence, `PRESENT` ambiguity e divergências de contrato; registrar divergências sem escolher silenciosamente um resultado.
 6. Manter `review_status=PENDING_HUMAN_REVIEW` até conferência humana. Concordância entre IAs não equivale a validação humana.
 
+Após a execução, exporte as respostas estruturadas persistidas para CSV com `python3 scripts/export_ai_judgments.py`. O exportador lê somente o JSONL de julgamentos concluídos e não toca em `human-review.csv`.
+
 ## Configuração e comandos
 
 Preparar a amostra equilibrada de 40 casos:
