@@ -8,6 +8,7 @@
   "build": "Maven",
   "persistence": "MySQL via Spring Data JPA",
   "authentication": "No authentication mechanism found in selected source",
-  "openapi_source": "Derived from selected source/controllers/Swagger annotations because no versioned openapi file was present; runtime endpoint is /v3/api-docs",
-  "validation_status": "static-only until SUT is started with configured MySQL"
+  "openapi_source": "Captured integrally from http://localhost:8080/v3/api-docs while running dataset commit 915859080da033fc36feae54bab3ad4a7b04e872; no versioned OpenAPI file was present in the dataset",
+  "openapi_runtime_sha256": "6aac08da6471505ede36b69a2f62ecd41d50398e52b0ad3ca127f3de9077ef8c",
+  "validation_status": "runtime-captured and structurally compared"
 }

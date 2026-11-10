@@ -10,7 +10,7 @@ def main():
     args = ap.parse_args()
     spec = (ROOT / 'api/openapi.json').read_text(encoding='utf-8')
     template = (ROOT / 'prompts/generation.template.txt').read_text(encoding='utf-8')
-    prompt = template.replace('${API_BASE_URL}', '${API_BASE_URL}').replace('${OPENAPI_SPEC}', spec)
+    prompt = template.replace('${OPENAPI_SPEC}', spec)
     out = ROOT / 'prompts/generation.txt'
     digest = hashlib.sha256(prompt.encode()).hexdigest()
     if args.verify and out.exists() and out.read_text(encoding='utf-8') != prompt:
