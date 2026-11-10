@@ -4,9 +4,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('--model', required=True); ap.add_argument('--run', type=int, required=True); a = ap.parse_args()
-    source = ROOT / 'tests' / a.model / f'run-{a.run:02d}.java'
+    ap = argparse.ArgumentParser(); ap.add_argument('--model', required=True); ap.add_argument('--run', type=int, required=True); ap.add_argument('--dry-run', action='store_true'); ap.add_argument('--test-source'); a = ap.parse_args()
+    source = Path(a.test_source).resolve() if a.test_source else ROOT / 'tests' / a.model / f'run-{a.run:02d}.java'
     if not source.exists(): raise SystemExit(f'extracted Java not found: {source}')
+    if a.dry_run:
+        print(json.dumps({'model': a.model, 'run': a.run, 'status': 'dry-run', 'source': str(source)})); return
     subprocess.run([sys.executable, str(ROOT/'scripts/reset_api.py')], check=True)
     base = os.environ.get('API_BASE_URL', 'http://localhost:8080')
     deadline = time.time() + int(os.environ.get('API_WAIT_SECONDS', '60'))

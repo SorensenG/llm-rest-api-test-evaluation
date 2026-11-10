@@ -25,6 +25,23 @@ docker compose -f infrastructure/docker-compose.yml up -d mysql
 
 Configure `API_BASE_URL` (padrão `http://localhost:8080`) e siga o guia de execução para compilar/iniciar o SUT original sem modificar seu comportamento.
 
+Com Java 17 selecionado no macOS:
+
+```bash
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
+export PATH="$JAVA_HOME/bin:$PATH"
+cd /caminho/para/Dataset/jdk_17_maven/cs/rest/spring-rest-example
+mvn -DskipTests package
+java -jar target/spring-rest-example-sut.jar \
+  --server.port=8080 \
+  --spring.datasource.url='jdbc:mysql://127.0.0.1:3306/project_api?useSSL=false&allowPublicKeyRetrieval=true' \
+  --spring.datasource.username=project \
+  --spring.datasource.password=project \
+  --spring.jpa.hibernate.ddl-auto=update
+```
+
+Em outro terminal, valide a infraestrutura com `mvn -Dtest=InfrastructureApiTest -DfailIfNoTests=false test`. O relatório XML ficará em `target/surefire-reports/`.
+
 ## Coleta manual
 
 Antes da coleta, confirme a disponibilidade e seleção exata dos dois modelos. Para cada conversa nova, cole o conteúdo de `prompts/generation.txt`, salve a primeira resposta integralmente em:
@@ -44,6 +61,8 @@ API_BASE_URL=http://localhost:8080 python3 scripts/run_one.py --model gemini-3.6
 python3 scripts/run_all.py
 python3 scripts/summarize.py
 ```
+
+Para dados de validação separados do experimento oficial: `python3 scripts/extract_java.py --model fixture-model --run 99 --response work/validation-fixtures/response.txt --output work/validation-fixtures/GeneratedApiTest.java`, `python3 scripts/run_one.py --model fixture-model --run 99 --test-source work/validation-fixtures/GeneratedApiTest.java --dry-run` e `python3 scripts/summarize.py --input work/validation-fixtures/summary.csv --output work/validation-fixtures/medians.csv`.
 
 `run_one.py` não corrige código, não adiciona imports e não ignora falhas. O teste de infraestrutura, quando usado, deve ficar separado de `tests/` e nunca entra nos CSVs científicos.
 
