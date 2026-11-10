@@ -42,6 +42,22 @@ java -jar target/spring-rest-example-sut.jar \
 
 Em outro terminal, valide a infraestrutura com `mvn -Dtest=InfrastructureApiTest -DfailIfNoTests=false test`. O relatório XML ficará em `target/surefire-reports/`.
 
+## Piloto técnico antes da coleta
+
+O piloto isolado fica em `work/pilot/` e não é uma amostra oficial. Ele pode ser repetido com:
+
+```bash
+API_RESTART_COMMAND='sh work/pilot/restart_api.sh' \
+  python3 scripts/run_one.py \
+  --model pilot --run 1 \
+  --test-source work/pilot/PilotInput.java \
+  --log-dir work/pilot/logs \
+  --reports-dir work/pilot/junit-reports
+python3 scripts/summarize.py --input work/pilot/summary.csv --output work/pilot/medians.csv
+```
+
+Antes de cada geração oficial, execute `python3 scripts/verify_prompt.py`. A coleta manual só deve começar depois da confirmação humana de que `gemini-3.6-flash` está selecionado na interface Gemini e `gpt-5.6-luna` na interface ChatGPT Work.
+
 ## Coleta manual
 
 Antes da coleta, confirme a disponibilidade e seleção exata dos dois modelos. Para cada conversa nova, cole o conteúdo de `prompts/generation.txt`, salve a primeira resposta integralmente em:

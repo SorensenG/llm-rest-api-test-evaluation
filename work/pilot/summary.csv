@@ -1,0 +1,2 @@
+model,run,total_tests,syntactically_valid_count,syntactically_valid_pct,executable_count,executable_pct,approved_count,approved_pct,positive_tests,negative_tests,boundary_tests,multi_endpoint_tests,assertion_errors,out_of_spec_requests,api_errors,other_errors,compile_status,execution_status
+pilot,01,2,2,100,,,,1,1,0,0,,,,,passed,pending_human_review

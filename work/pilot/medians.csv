@@ -1,0 +1,8 @@
+model,metric,median,n_observations
+pilot,total_tests,2.0,1
+pilot,syntactically_valid_count,2.0,1
+pilot,syntactically_valid_pct,100.0,1
+pilot,approved_pct,1.0,1
+pilot,positive_tests,1.0,1
+pilot,negative_tests,0.0,1
+pilot,boundary_tests,0.0,1

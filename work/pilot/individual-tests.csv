@@ -1,0 +1,3 @@
+model,run,test_method,syntactically_valid,executable,approved,scenario_positive,scenario_negative,scenario_boundary,scenario_multi_endpoint,failure_cause,evidence,review_status
+pilot,01,pilotCreatesProjectUsingObservedStatus,TRUE,PENDING,PENDING,TRUE,FALSE,FALSE,FALSE,,work/pilot/junit-reports/TEST-GeneratedApiTest.xml,PENDING_HUMAN_REVIEW
+pilot,01,pilotReadsUnknownProject,TRUE,PENDING,PENDING,FALSE,TRUE,FALSE,FALSE,,work/pilot/junit-reports/TEST-GeneratedApiTest.xml,PENDING_HUMAN_REVIEW
