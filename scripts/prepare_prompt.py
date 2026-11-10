@@ -13,8 +13,14 @@ def main():
     prompt = template.replace('${OPENAPI_SPEC}', spec)
     out = ROOT / 'prompts/generation.txt'
     digest = hashlib.sha256(prompt.encode()).hexdigest()
-    if args.verify and out.exists() and out.read_text(encoding='utf-8') != prompt:
-        raise SystemExit('generation.txt differs from the frozen template/specification')
+    if args.verify:
+        if not out.exists():
+            raise SystemExit('generation.txt does not exist')
+        existing = out.read_text(encoding='utf-8')
+        if existing != prompt:
+            raise SystemExit('generation.txt differs from the frozen template/specification')
+        print(json.dumps({'prompt': str(out), 'sha256': hashlib.sha256(existing.encode()).hexdigest(), 'verified_only': True}, indent=2))
+        return
     out.write_text(prompt, encoding='utf-8')
     (ROOT / 'prompts/generation.sha256').write_text(digest + '  generation.txt\n', encoding='utf-8')
     print(json.dumps({'prompt': str(out), 'sha256': digest}, indent=2))

@@ -10,7 +10,7 @@ O SUT é `jdk_17_maven/cs/rest/spring-rest-example` do Web Fuzzing Dataset, no c
 
 ## Requisitos
 
-- Java 17 e Maven 3.9+ (o projeto fixa Java 17; Java 26 local não substitui Java 17).
+- Java 17 e Maven 3.9+.
 - Python 3.10+.
 - Docker e Docker Compose.
 - `gh` autenticado apenas para publicação do repositório.
@@ -18,7 +18,6 @@ O SUT é `jdk_17_maven/cs/rest/spring-rest-example` do Web Fuzzing Dataset, no c
 ## Preparação
 
 ```bash
-python3 scripts/prepare_prompt.py
 python3 scripts/prepare_prompt.py --verify
 docker compose -f infrastructure/docker-compose.yml up -d mysql
 ```
@@ -74,9 +73,11 @@ O prompt não deve ser alterado após a primeira geração oficial. Registre met
 ```bash
 python3 scripts/extract_java.py --model gemini-3.6-flash --run 01
 API_BASE_URL=http://localhost:8080 python3 scripts/run_one.py --model gemini-3.6-flash --run 01
-python3 scripts/run_all.py
+python3 scripts/run_all.py --api-restart-command 'sh /caminho/para/restart-sut.sh'
 python3 scripts/summarize.py
 ```
+
+`run_all.py` exige as 20 respostas originais antes de começar, extrai cada resposta sem reparos e executa os conjuntos em sequência. O reinício do SUT é obrigatório antes de cada conjunto. Falhas de compilação, execução ou asserção retornam código experimental `10` e não interrompem o lote; falhas de Docker, MySQL, reset, reinício ou saúde da API retornam código de infraestrutura `20` e interrompem o lote.
 
 Para dados de validação separados do experimento oficial: `python3 scripts/extract_java.py --model fixture-model --run 99 --response work/validation-fixtures/response.txt --output work/validation-fixtures/GeneratedApiTest.java`, `python3 scripts/run_one.py --model fixture-model --run 99 --test-source work/validation-fixtures/GeneratedApiTest.java --dry-run` e `python3 scripts/summarize.py --input work/validation-fixtures/summary.csv --output work/validation-fixtures/medians.csv`.
 
