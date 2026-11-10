@@ -1,6 +1,6 @@
 # Avaliação Experimental de Modelos de Linguagem na Geração Automática de Testes para APIs RESTful
 
-Infraestrutura reproduzível para uma Iniciação Científica da UNICAMP que compara, sob o mesmo prompt e a mesma especificação OpenAPI, testes de integração black-box gerados por `gemini-3.6-think` e `gpt-5.6-sol`.
+Infraestrutura reproduzível para uma Iniciação Científica da UNICAMP que compara, sob o mesmo prompt e a mesma especificação OpenAPI, testes de integração black-box gerados por `gemini-3.6-think` e `gpt-6`.
 
 ## Escopo e estado atual
 
@@ -55,7 +55,7 @@ API_RESTART_COMMAND='sh work/pilot/restart_api.sh' \
 python3 scripts/summarize.py --input work/pilot/summary.csv --output work/pilot/medians.csv
 ```
 
-Antes de cada geração oficial, execute `python3 scripts/verify_prompt.py`. A coleta manual só deve começar depois da confirmação humana de que Google Gemini 3.6 Think (`gemini-3.6-think`) está selecionado na interface Gemini e OpenAI GPT-5.6 Sol (`gpt-5.6-sol`) na interface ChatGPT Work.
+Antes de cada geração oficial, execute `python3 scripts/verify_prompt.py`. A coleta manual só deve começar depois da confirmação humana de que Google Gemini 3.6 Think (`gemini-3.6-think`) está selecionado na interface Gemini e OpenAI GPT-6 (`gpt-6`) na interface ChatGPT Work.
 
 ## Coleta manual
 
@@ -63,7 +63,7 @@ Antes da coleta, confirme a disponibilidade e seleção exata dos dois modelos. 
 
 ```text
 responses/gemini-3.6-think/run-01.txt
-responses/gpt-5.6-sol/run-01.txt
+responses/gpt-6/run-01.txt
 ```
 
 O prompt não deve ser alterado após a primeira geração oficial. Registre metadados no arquivo `.metadata.json` correspondente, usando o modelo de [`responses/metadata.example.json`](responses/metadata.example.json) e o hash produzido pelo script.

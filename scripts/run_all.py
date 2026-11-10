@@ -9,7 +9,7 @@ def main():
     ap = argparse.ArgumentParser(description='Extract and execute all 20 official response sets sequentially.')
     ap.add_argument('--api-restart-command', required=True, help='Command that restarts the external SUT after each database reset.')
     a = ap.parse_args()
-    official = [(model, run) for model in ('gemini-3.6-think', 'gpt-5.6-sol') for run in range(1, 11)]
+    official = [(model, run) for model in ('gemini-3.6-think', 'gpt-6') for run in range(1, 11)]
     missing = []
     for model, run in official:
         response = ROOT / 'responses' / model / f'run-{run:02d}.txt'
