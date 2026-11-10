@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["q1", "q4", "justification", "evidence", "confidence", "ambiguity", "needs_human_review"],
+  "properties": {
+    "q1": {"type":"object"}, "q4": {"type":"object"},
+    "justification": {"type":"string"}, "evidence": {"type":"array", "items":{"type":"string"}},
+    "confidence": {"enum":["HIGH","MEDIUM","LOW"]}, "ambiguity": {"enum":["NONE","PRESENT"]},
+    "needs_human_review": {"const":true}
+  }
+}

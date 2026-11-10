@@ -4,9 +4,13 @@
 
 Esta infraestrutura foi preparada a partir do commit `b15c61f`, mas nenhum modelo avaliador foi acessível no ambiente durante esta execução. Portanto, foram produzidos **0 julgamentos de IA**. Não foram simuladas respostas, justificativas, confiança ou concordâncias. Os 817 métodos permanecem `NOT_EVALUATED` e `PENDING_HUMAN_REVIEW`.
 
+O caminho Codex foi verificado em 10/11/2026: `codex-cli 0.133.0`, `codex login status` informou `Logged in using ChatGPT`, e `codex doctor` confirmou autenticação e conectividade. Porém, as chamadas reais falharam antes da avaliação: `gpt-6.1-sol` foi rejeitado como `model_not_found` para uso com conta ChatGPT; o perfil padrão `gpt-5.6-luna` e `gpt-6-astra` exigiram uma versão mais nova do Codex. Assim, o avaliador efetivamente utilizado foi nenhum, e o piloto de 40 casos não foi iniciado.
+
 O LLM-as-a-Judge é uma etapa complementar e não substitui o protocolo experimental, a revisão humana ou os resultados originais. O arquivo `results/final-analysis/human-review.csv` foi preservado; seu SHA-256 nesta preparação é `d8db691e3b99c3ac2cd626c896eb1c8ae73e4ba95ad2c600d4399815016a3ce6`.
 
 O executor real está em `scripts/ai_judge.py`. Ele usa a API Anthropic somente quando `--execute`, `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL` e `AI_JUDGE_MAX_USD` estão configurados explicitamente. O modelo não é presumido pelo repositório. A retomada usa `results/ai-review-execution/ai-judgments.jsonl`; respostas concluídas não são reenviadas. Respostas brutas ficam em `raw.jsonl`, erros em `errors.jsonl` e o estado dos julgamentos é sempre `AI_REVIEWED` com `PENDING_HUMAN_REVIEW`.
+
+O executor opcional para a conta ChatGPT é `scripts/codex_ai_judge.py`. Ele chama somente `codex exec` oficial, com `--sandbox read-only`, `--ephemeral`, `--output-schema` e `--output-last-message`; não lê nem publica tokens de autenticação. O modelo precisa ser passado explicitamente e existir no catálogo local. A família do avaliador Codex é OpenAI, portanto pode introduzir viés de família na comparação com GPT-6; isso deve ser tratado como limitação metodológica.
 
 ## Evidência e unidade de avaliação
 
@@ -65,6 +69,25 @@ python3 scripts/ai_judge.py --sample-file results/ai-review/manual-sample-40-bal
 ```
 
 Para os 817 métodos, omita `--sample-file` e use `--execute`. Os preços usados na estimativa podem ser substituídos por `AI_JUDGE_INPUT_USD_PER_MTOK` e `AI_JUDGE_OUTPUT_USD_PER_MTOK`; o executor bloqueia a execução se a estimativa máxima exceder `AI_JUDGE_MAX_USD`.
+
+No caminho Codex, primeiro validar disponibilidade e fazer uma única avaliação:
+
+```bash
+python3 scripts/codex_ai_judge.py --model IDENTIFICADOR_DO_CATALOGO --max-cases 1 --execute
+```
+
+Somente após conferir a saída, executar o piloto balanceado:
+
+```bash
+python3 scripts/codex_ai_judge.py --model IDENTIFICADOR_DO_CATALOGO --source results/ai-review/manual-sample-40-balanced.csv --execute
+python3 scripts/export_ai_judgments.py --input results/ai-review-codex/ai-judgments.jsonl
+```
+
+O lote completo fica preparado, mas não deve ser iniciado até o piloto ser aprovado:
+
+```bash
+python3 scripts/codex_ai_judge.py --model IDENTIFICADOR_DO_CATALOGO --execute
+```
 
 ## Riscos e limitações
 
