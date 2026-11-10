@@ -59,5 +59,7 @@ Todos os registros produzidos por esta análise permanecem com `PENDING_HUMAN_RE
 - `results/final-analysis/failure-analysis.csv`
 - `results/final-analysis/variability.csv`
 - `results/final-analysis/comparison.md`
+- `results/final-analysis/human-review.csv`
+- `docs/human-review-procedure.md`
 
 Comando de validação: `python3 scripts/validate_final_analysis.py`.
