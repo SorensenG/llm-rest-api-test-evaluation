@@ -1,0 +1,23 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,43] illegal character: '\'
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,44] not a statement
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,48] ';' expected
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,50] illegal character: '\'
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,51] not a statement
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,55] ';' expected
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,81] ';' expected
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.12.1:testCompile (default-testCompile) on project llm-rest-api-test-evaluation: Compilation failure: Compilation failure: 
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,43] illegal character: '\'
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,44] not a statement
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,48] ';' expected
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,50] illegal character: '\'
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,51] not a statement
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,55] ';' expected
+[ERROR] /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa/.generated-test-src/GeneratedApiTest.java:[18,81] ';' expected
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

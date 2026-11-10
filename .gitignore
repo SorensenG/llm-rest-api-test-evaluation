@@ -6,5 +6,6 @@ __pycache__/
 .env
 *.log
 work/official-attempt-1/
+work/restore-b3/
 !results/sut-logs/
 !results/sut-logs/api.log

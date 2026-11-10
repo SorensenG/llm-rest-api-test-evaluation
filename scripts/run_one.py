@@ -6,7 +6,7 @@ EXPERIMENTAL_FAILURE = 10
 INFRASTRUCTURE_FAILURE = 20
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('--model', required=True); ap.add_argument('--run', type=int, required=True); ap.add_argument('--dry-run', action='store_true'); ap.add_argument('--test-source'); ap.add_argument('--log-dir'); ap.add_argument('--reports-dir'); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument('--model', required=True); ap.add_argument('--run', type=int, required=True); ap.add_argument('--dry-run', action='store_true'); ap.add_argument('--test-source'); ap.add_argument('--log-dir'); ap.add_argument('--reports-dir'); ap.add_argument('--results-dir', default=str(ROOT/'results')); a = ap.parse_args()
     source = Path(a.test_source).resolve() if a.test_source else ROOT / 'tests' / a.model / f'run-{a.run:02d}.java'
     if not source.exists(): raise SystemExit(f'extracted Java not found: {source}')
     if a.dry_run:
@@ -34,8 +34,9 @@ def main():
     for p in gen.glob('*.java'): p.unlink()
     shutil.copy2(source, gen / 'GeneratedApiTest.java')
     env = os.environ.copy(); env.update({'API_BASE_URL': base, 'model': a.model, 'run': f'{a.run:02d}'})
-    logdir = Path(a.log_dir).resolve() if a.log_dir else ROOT / 'results/execution-logs' / a.model / f'run-{a.run:02d}'
-    reports = Path(a.reports_dir).resolve() if a.reports_dir else ROOT / 'results/junit-reports' / a.model / f'run-{a.run:02d}'
+    output_root = Path(a.results_dir).resolve()
+    logdir = Path(a.log_dir).resolve() if a.log_dir else output_root / 'execution-logs' / a.model / f'run-{a.run:02d}'
+    reports = Path(a.reports_dir).resolve() if a.reports_dir else output_root / 'junit-reports' / a.model / f'run-{a.run:02d}'
     for output_dir in (logdir, reports):
         if output_dir.exists(): shutil.rmtree(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)

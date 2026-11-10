@@ -2,6 +2,7 @@
 import csv
 import re
 import xml.etree.ElementTree as ET
+import argparse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,33 +21,37 @@ def source_methods(source):
 
 def scenarios(method, body):
     lower = body.lower()
-    requests = len(re.findall(r'\.(?:get|post|put|delete|patch|head|options)\s*\(', body))
+    operations = set(re.findall(r'\.(get|post|put|delete|patch|head|options)\s*\(', body, flags=re.I))
     negative_words = ('invalid', 'notfound', 'not_found', 'doesnotexist', 'does_not_exist', 'malformed', 'missing', 'null', 'empty', 'negative', 'unknown', 'nonexistent', 'error', 'reject')
     boundary_words = ('boundary', 'limit', 'maximum', 'minimum', 'max', 'min', 'zero', 'empty', 'long', 'short', 'length', 'negative')
     positive = ('success' in lower or 'valid' in lower or 'created' in lower) and not any(w in lower for w in ('invalid', 'notfound', 'not_found', 'negative'))
     negative = any(w in lower for w in negative_words)
     boundary = any(w in lower for w in boundary_words)
-    multi = requests >= 2
+    multi = len(operations) >= 2
     return positive, negative, boundary, multi
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--results-dir', default=str(ROOT / 'results'))
+    args = parser.parse_args()
+    results = Path(args.results_dir).resolve()
     individual = []
     summary = []
     for model in MODELS:
         for run in range(1, 11):
             run_id = f'{run:02d}'
             source = ROOT / 'tests' / model / f'run-{run_id}.java'
-            report = ROOT / 'results' / 'junit-reports' / model / f'run-{run_id}' / 'TEST-GeneratedApiTest.xml'
+            report = results / 'junit-reports' / model / f'run-{run_id}' / 'TEST-GeneratedApiTest.xml'
             methods, source_count = source_methods(source)
             if not report.exists():
-                log = ROOT / 'results' / 'execution-logs' / model / f'run-{run_id}' / 'stdout.txt'
+                log = results / 'execution-logs' / model / f'run-{run_id}' / 'stdout.txt'
                 evidence = str(log.relative_to(ROOT)) if log.exists() else 'missing Surefire XML'
                 summary.append({
                     'model': model, 'run': run_id, 'total_tests': source_count,
-                    'syntactically_valid_count': 0, 'syntactically_valid_pct': '0.00' if source_count else '',
-                    'executable_count': 0, 'executable_pct': '0.00' if source_count else '',
-                    'approved_count': 0, 'approved_pct': '0.00' if source_count else '',
+                    'syntactically_valid_count': '', 'syntactically_valid_pct': '',
+                    'executable_count': '', 'executable_pct': '',
+                    'approved_count': '', 'approved_pct': '',
                     'positive_tests': '', 'negative_tests': '', 'boundary_tests': '', 'multi_endpoint_tests': '',
                     'assertion_errors': '', 'out_of_spec_requests': '', 'api_errors': '', 'other_errors': '',
                     'compile_status': 'failed', 'execution_status': 'not_executed'
@@ -59,6 +64,8 @@ def main():
             failures = int(root.attrib.get('failures', 0))
             approved = 0
             executable = 0
+            run_assertion_errors = 0
+            run_api_errors = 0
             counts = {'positive': 0, 'negative': 0, 'boundary': 0, 'multi': 0}
             for case in testcases:
                 name = case.attrib.get('name', '')
@@ -84,11 +91,14 @@ def main():
                 if is_error:
                     cause = 'execution_error'
                 elif is_failure:
-                    if re.search(r'Expected status code <(?:200|201)> but was <(?:200|201)>', text):
+                    valid_project_create = ('post("/api/project' in body or "post('/api/project" in body) and positive
+                    if valid_project_create and re.search(r'Expected status code <(?:200|201)> but was <(?:200|201)>', text):
                         cause = 'api_error'
                         text += ' | subcategory=contrato-openapi-status-http-200-201'
+                        run_api_errors += 1
                     else:
                         cause = 'assertion_error'
+                        run_assertion_errors += 1
                 individual.append({
                     'model': model, 'run': run_id, 'test_method': name,
                     'syntactically_valid': 'TRUE',
@@ -111,12 +121,11 @@ def main():
                 'approved_count': approved, 'approved_pct': pct(approved),
                 'positive_tests': counts['positive'], 'negative_tests': counts['negative'],
                 'boundary_tests': counts['boundary'], 'multi_endpoint_tests': counts['multi'],
-                'assertion_errors': failures, 'out_of_spec_requests': '',
-                'api_errors': sum(1 for row in individual if row['model'] == model and row['run'] == run_id and row['failure_cause'] == 'api_error'),
+                'assertion_errors': run_assertion_errors, 'out_of_spec_requests': '',
+                'api_errors': run_api_errors,
                 'other_errors': errors, 'compile_status': 'passed',
                 'execution_status': 'passed' if errors == 0 and failures == 0 else 'failed'
             })
-    results = ROOT / 'results'
     with (results / 'individual-tests.csv').open('w', newline='', encoding='utf-8') as handle:
         fields = list(individual[0])
         writer = csv.DictWriter(handle, fieldnames=fields); writer.writeheader(); writer.writerows(individual)

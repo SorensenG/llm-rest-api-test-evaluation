@@ -7,21 +7,21 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.0.4)
 
-2026-11-10T12:26:00.630-03:00  INFO 63945 --- [           main] com.sw.project.ProjectApiApplication     : Starting ProjectApiApplication v0.0.1 using Java 17.0.21 with PID 63945 (/Users/sorenseng/Documents/ic/API/Dataset/jdk_17_maven/cs/rest/spring-rest-example/target/spring-rest-example-sut.jar started by sorenseng in /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa)
-2026-11-10T12:26:00.632-03:00  INFO 63945 --- [           main] com.sw.project.ProjectApiApplication     : No active profile set, falling back to 1 default profile: "default"
-2026-11-10T12:26:01.014-03:00  INFO 63945 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-11-10T12:26:01.042-03:00  INFO 63945 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 3 JPA repository interfaces.
-2026-11-10T12:26:01.291-03:00  INFO 63945 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2026-11-10T12:26:01.295-03:00  INFO 63945 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-11-10T12:26:01.295-03:00  INFO 63945 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
-2026-11-10T12:26:01.330-03:00  INFO 63945 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-11-10T12:26:01.331-03:00  INFO 63945 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 678 ms
-2026-11-10T12:26:01.395-03:00  INFO 63945 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-11-10T12:26:01.417-03:00  INFO 63945 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
-2026-11-10T12:26:01.514-03:00  INFO 63945 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-11-10T12:26:01.595-03:00  INFO 63945 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@79b663b3
-2026-11-10T12:26:01.596-03:00  INFO 63945 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-11-10T12:26:01.616-03:00  INFO 63945 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2026-11-10T14:14:51.030-03:00  INFO 77391 --- [           main] com.sw.project.ProjectApiApplication     : Starting ProjectApiApplication v0.0.1 using Java 17.0.21 with PID 77391 (/Users/sorenseng/Documents/ic/API/Dataset/jdk_17_maven/cs/rest/spring-rest-example/target/spring-rest-example-sut.jar started by sorenseng in /Users/sorenseng/Documents/Codex/2026-11-09/files-pasted-by-the-user-implementa)
+2026-11-10T14:14:51.032-03:00  INFO 77391 --- [           main] com.sw.project.ProjectApiApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-11-10T14:14:51.445-03:00  INFO 77391 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-10T14:14:51.471-03:00  INFO 77391 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 3 JPA repository interfaces.
+2026-11-10T14:14:51.787-03:00  INFO 77391 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-11-10T14:14:51.793-03:00  INFO 77391 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-10T14:14:51.793-03:00  INFO 77391 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2026-11-10T14:14:51.827-03:00  INFO 77391 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-10T14:14:51.827-03:00  INFO 77391 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 774 ms
+2026-11-10T14:14:51.897-03:00  INFO 77391 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-10T14:14:51.920-03:00  INFO 77391 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2026-11-10T14:14:52.025-03:00  INFO 77391 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-10T14:14:52.098-03:00  INFO 77391 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4beddc56
+2026-11-10T14:14:52.099-03:00  INFO 77391 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-10T14:14:52.122-03:00  INFO 77391 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
 Hibernate: 
     
     create table problem (
@@ -67,15 +67,15 @@ Hibernate:
        add constraint FK49lfex91pi1k4qofqkcs681pl 
        foreign key (pro_idx) 
        references problem (idx)
-2026-11-10T12:26:01.952-03:00  INFO 63945 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2026-11-10T12:26:01.955-03:00  INFO 63945 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-11-10T12:26:02.182-03:00  WARN 63945 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-11-10T12:26:02.580-03:00  INFO 63945 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2026-11-10T12:26:02.592-03:00  INFO 63945 --- [           main] com.sw.project.ProjectApiApplication     : Started ProjectApiApplication in 2.154 seconds (process running for 2.355)
-2026-11-10T12:26:03.253-03:00  INFO 63945 --- [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-11-10T12:26:03.253-03:00  INFO 63945 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-11-10T12:26:03.253-03:00  INFO 63945 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2026-11-10T12:26:03.418-03:00  INFO 63945 --- [nio-8080-exec-2] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 149 ms
+2026-11-10T14:14:52.527-03:00  INFO 77391 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-11-10T14:14:52.531-03:00  INFO 77391 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-10T14:14:52.814-03:00  WARN 77391 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-10T14:14:53.295-03:00  INFO 77391 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2026-11-10T14:14:53.308-03:00  INFO 77391 --- [           main] com.sw.project.ProjectApiApplication     : Started ProjectApiApplication in 2.482 seconds (process running for 2.746)
+2026-11-10T14:14:53.554-03:00  INFO 77391 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-10T14:14:53.555-03:00  INFO 77391 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-10T14:14:53.555-03:00  INFO 77391 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-11-10T14:14:53.737-03:00  INFO 77391 --- [nio-8080-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 164 ms
 Hibernate: 
     SELECT
         * 
@@ -159,7 +159,7 @@ Hibernate:
         problem 
     WHERE
         code=?
-2026-11-10T12:26:06.537-03:00 ERROR 63945 --- [nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null] with root cause
+2026-11-10T14:14:57.159-03:00 ERROR 77391 --- [nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null] with root cause
 
 java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null
 	at com.sw.project.controller.subProblemController.saveSubProblem(subProblemController.java:37) ~[classes!/:0.0.1]
@@ -237,7 +237,7 @@ Hibernate:
         project p1_0 
     where
         p1_0.code=?
-2026-11-10T12:26:06.596-03:00  INFO 63945 --- [io-8080-exec-10] c.sw.project.service.ProjectServiceImpl  : Code !!
+2026-11-10T14:14:57.320-03:00  INFO 77391 --- [io-8080-exec-10] c.sw.project.service.ProjectServiceImpl  : Code !!
 Hibernate: 
     insert 
     into
@@ -282,7 +282,7 @@ Hibernate:
         project p1_0 
     where
         p1_0.code=?
-2026-11-10T12:26:06.694-03:00  INFO 63945 --- [nio-8080-exec-8] c.sw.project.service.ProjectServiceImpl  : Code !!
+2026-11-10T14:14:57.439-03:00  INFO 77391 --- [nio-8080-exec-8] c.sw.project.service.ProjectServiceImpl  : Code !!
 Hibernate: 
     insert 
     into
@@ -304,7 +304,7 @@ Hibernate:
         project 
     WHERE
         code=?
-2026-11-10T12:26:06.743-03:00 ERROR 63945 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null] with root cause
+2026-11-10T14:14:57.501-03:00 ERROR 77391 --- [nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null] with root cause
 
 java.lang.NullPointerException: Cannot invoke "String.length()" because the return value of "com.sw.project.domain.subProblemBody.getContent()" is null
 	at com.sw.project.controller.subProblemController.saveSubProblem(subProblemController.java:37) ~[classes!/:0.0.1]
@@ -415,7 +415,7 @@ Hibernate:
         project p1_0 
     where
         p1_0.code=?
-2026-11-10T12:26:06.808-03:00  INFO 63945 --- [io-8080-exec-10] c.sw.project.service.ProjectServiceImpl  : Code !!
+2026-11-10T14:14:57.680-03:00  INFO 77391 --- [nio-8080-exec-9] c.sw.project.service.ProjectServiceImpl  : Code !!
 Hibernate: 
     DELETE 
     FROM

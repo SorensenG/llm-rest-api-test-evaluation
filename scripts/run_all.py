@@ -8,6 +8,7 @@ INFRASTRUCTURE_FAILURE = 20
 def main():
     ap = argparse.ArgumentParser(description='Extract and execute all 20 official response sets sequentially.')
     ap.add_argument('--api-restart-command', required=True, help='Command that restarts the external SUT after each database reset.')
+    ap.add_argument('--results-dir', default=str(ROOT / 'results'), help='Independent output directory for this execution.')
     a = ap.parse_args()
     official = [(model, run) for model in ('gemini-3.6-think', 'gpt-6') for run in range(1, 11)]
     missing = []
@@ -25,7 +26,7 @@ def main():
             return INFRASTRUCTURE_FAILURE
     experimental_failures = []
     for model, run in official:
-        result = subprocess.run([sys.executable, str(ROOT/'scripts/run_one.py'), '--model', model, '--run', str(run)], env={**os.environ, 'API_RESTART_COMMAND': a.api_restart_command})
+        result = subprocess.run([sys.executable, str(ROOT/'scripts/run_one.py'), '--model', model, '--run', str(run), '--results-dir', a.results_dir], env={**os.environ, 'API_RESTART_COMMAND': a.api_restart_command})
         if result.returncode == 10:
             experimental_failures.append(f'{model}/run-{run:02d}')
             continue
