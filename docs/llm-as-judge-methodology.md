@@ -6,6 +6,8 @@ Esta infraestrutura foi preparada a partir do commit `b15c61f`, mas nenhum model
 
 O LLM-as-a-Judge é uma etapa complementar e não substitui o protocolo experimental, a revisão humana ou os resultados originais. O arquivo `results/final-analysis/human-review.csv` foi preservado; seu SHA-256 nesta preparação é `d8db691e3b99c3ac2cd626c896eb1c8ae73e4ba95ad2c600d4399815016a3ce6`.
 
+O executor real está em `scripts/ai_judge.py`. Ele usa a API Anthropic somente quando `--execute`, `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL` e `AI_JUDGE_MAX_USD` estão configurados explicitamente. O modelo não é presumido pelo repositório. A retomada usa `results/ai-review-execution/ai-judgments.jsonl`; respostas concluídas não são reenviadas. Respostas brutas ficam em `raw.jsonl`, erros em `errors.jsonl` e o estado dos julgamentos é sempre `AI_REVIEWED` com `PENDING_HUMAN_REVIEW`.
+
 ## Evidência e unidade de avaliação
 
 Cada unidade é identificada por `model`, `run` e `test_method`. O avaliador deverá receber o método Java original com o contexto auxiliar necessário, a especificação OpenAPI congelada, o relatório Surefire correspondente quando existir, os logs oficiais e o protocolo. Os conjuntos Gemini 05/06 devem manter Q1 individual como `UNKNOWN`, pois não há observação Surefire por método.
@@ -36,6 +38,31 @@ O prompt fixo está em `prompts/ai-judge.template.txt` (SHA-256 `b118d8cbc5536e6
 4. Validar JSON, identificador, enumerações e referências de evidência antes de marcar `evaluation_status=AI_REVIEWED`.
 5. Reavaliar independentemente casos `LOW` confidence, `PRESENT` ambiguity e divergências de contrato; registrar divergências sem escolher silenciosamente um resultado.
 6. Manter `review_status=PENDING_HUMAN_REVIEW` até conferência humana. Concordância entre IAs não equivale a validação humana.
+
+## Configuração e comandos
+
+Preparar a amostra equilibrada de 40 casos:
+
+```bash
+python3 scripts/prepare_ai_pilot.py
+```
+
+Executar somente a estimativa, sem rede:
+
+```bash
+python3 scripts/ai_judge.py --sample-file results/ai-review/manual-sample-40-balanced.csv --dry-run
+```
+
+Após configurar uma chave própria, o identificador oficial do modelo e o orçamento máximo:
+
+```bash
+export ANTHROPIC_API_KEY='...'
+export ANTHROPIC_MODEL='identificador-oficial-configurado-pelo-pesquisador'
+export AI_JUDGE_MAX_USD='valor-positivo-em-dolares'
+python3 scripts/ai_judge.py --sample-file results/ai-review/manual-sample-40-balanced.csv --execute
+```
+
+Para os 817 métodos, omita `--sample-file` e use `--execute`. Os preços usados na estimativa podem ser substituídos por `AI_JUDGE_INPUT_USD_PER_MTOK` e `AI_JUDGE_OUTPUT_USD_PER_MTOK`; o executor bloqueia a execução se a estimativa máxima exceder `AI_JUDGE_MAX_USD`.
 
 ## Riscos e limitações
 

@@ -1,0 +1,41 @@
+sample_id,model,run,test_method,code_reference,priority,q1_failure_cause,operations,review_status
+S-01,gemini-3.6-think,05,testCreateProject_Success,tests/gemini-3.6-think/run-05.java#testCreateProject_Success,HIGH,compile_failure_unknown_per_method,POST /api/project,PENDING_HUMAN_REVIEW
+S-02,gemini-3.6-think,05,testCreateProject_InvalidTitle_TooShort,tests/gemini-3.6-think/run-05.java#testCreateProject_InvalidTitle_TooShort,HIGH,compile_failure_unknown_per_method,POST /api/project,PENDING_HUMAN_REVIEW
+S-03,gemini-3.6-think,05,testCreateProject_BoundaryTitle_FourChars_Invalid,tests/gemini-3.6-think/run-05.java#testCreateProject_BoundaryTitle_FourChars_Invalid,HIGH,compile_failure_unknown_per_method,POST /api/project,PENDING_HUMAN_REVIEW
+S-04,gemini-3.6-think,05,testCreateProject_BoundaryTitle_FiveChars_Valid,tests/gemini-3.6-think/run-05.java#testCreateProject_BoundaryTitle_FiveChars_Valid,HIGH,compile_failure_unknown_per_method,POST /api/project,PENDING_HUMAN_REVIEW
+S-05,gemini-3.6-think,01,testMultiEndpointLifecycleScenario,tests/gemini-3.6-think/run-01.java#testMultiEndpointLifecycleScenario,HIGH,execution_error,DELETE /api/problem/; DELETE /api/project/; GET /api/problem/; GET /api/project/; POST /api/problem/; POST /api/project; POST /api/subproblem; PUT /api/project/,PENDING_HUMAN_REVIEW
+S-06,gemini-3.6-think,02,testMultiEndpoint_ProjectAndProblemLifecycle,tests/gemini-3.6-think/run-02.java#testMultiEndpoint_ProjectAndProblemLifecycle,HIGH,execution_error,DELETE /api/problem/; DELETE /api/project/; GET /api/problem/; GET /api/project/; POST /api/problem/; POST /api/project; POST /api/subproblem; PUT /api/project/,PENDING_HUMAN_REVIEW
+S-07,gemini-3.6-think,03,testProjectLifecycleCreateGetUpdateDelete,tests/gemini-3.6-think/run-03.java#testProjectLifecycleCreateGetUpdateDelete,HIGH,execution_error,DELETE /api/project/{code}; GET /api/project/{code}; POST /api/project; PUT /api/project/{code},PENDING_HUMAN_REVIEW
+S-08,gemini-3.6-think,03,testCreateAndGetProblemSuccess,tests/gemini-3.6-think/run-03.java#testCreateAndGetProblemSuccess,HIGH,execution_error,GET /api/problem/{code}; POST /api/problem/{code}; POST /api/project,PENDING_HUMAN_REVIEW
+S-09,gemini-3.6-think,01,testDeleteProjectNotFound,tests/gemini-3.6-think/run-01.java#testDeleteProjectNotFound,HIGH,assertion_error,DELETE /api/project/NOTFOUND123,PENDING_HUMAN_REVIEW
+S-10,gemini-3.6-think,01,testGetProblemsNotFound,tests/gemini-3.6-think/run-01.java#testGetProblemsNotFound,HIGH,assertion_error,GET /api/problem/NOTFOUND123,PENDING_HUMAN_REVIEW
+S-11,gemini-3.6-think,01,testDeleteProblemsAllNotFound,tests/gemini-3.6-think/run-01.java#testDeleteProblemsAllNotFound,HIGH,assertion_error,DELETE /api/problem/NOTFOUND123/all,PENDING_HUMAN_REVIEW
+S-12,gemini-3.6-think,02,testDeleteProject_Failure_NotFound,tests/gemini-3.6-think/run-02.java#testDeleteProject_Failure_NotFound,HIGH,assertion_error,DELETE /api/project/NONEXISTENT_CODE_123,PENDING_HUMAN_REVIEW
+S-13,gemini-3.6-think,01,testCreateProjectSuccess,tests/gemini-3.6-think/run-01.java#testCreateProjectSuccess,LOW,,POST /api/project,PENDING_HUMAN_REVIEW
+S-14,gemini-3.6-think,01,testCreateProjectBoundaryTitleLengthFour,tests/gemini-3.6-think/run-01.java#testCreateProjectBoundaryTitleLengthFour,LOW,,POST /api/project,PENDING_HUMAN_REVIEW
+S-15,gemini-3.6-think,01,testCreateProjectBoundaryTitleLengthFive,tests/gemini-3.6-think/run-01.java#testCreateProjectBoundaryTitleLengthFive,LOW,,POST /api/project,PENDING_HUMAN_REVIEW
+S-16,gemini-3.6-think,01,testGetProjectInvalidCodeLength,tests/gemini-3.6-think/run-01.java#testGetProjectInvalidCodeLength,LOW,,GET /api/project/12345,PENDING_HUMAN_REVIEW
+S-17,gemini-3.6-think,01,testGetProjectNotFound,tests/gemini-3.6-think/run-01.java#testGetProjectNotFound,LOW,,GET /api/project/NOTFOUND123,PENDING_HUMAN_REVIEW
+S-18,gemini-3.6-think,01,testUpdateProjectInvalidCodeLength,tests/gemini-3.6-think/run-01.java#testUpdateProjectInvalidCodeLength,LOW,,PUT /api/project/12345,PENDING_HUMAN_REVIEW
+S-19,gemini-3.6-think,01,testUpdateProjectNotFound,tests/gemini-3.6-think/run-01.java#testUpdateProjectNotFound,LOW,,PUT /api/project/NOTFOUND123,PENDING_HUMAN_REVIEW
+S-20,gemini-3.6-think,01,testDeleteProjectInvalidCodeLength,tests/gemini-3.6-think/run-01.java#testDeleteProjectInvalidCodeLength,LOW,,DELETE /api/project/12345,PENDING_HUMAN_REVIEW
+S-21,gpt-6,01,createProjectWithValidTitle,tests/gpt-6/run-01.java#createProjectWithValidTitle,HIGH,api_error_contract_status_200_201,POST /api/project,PENDING_HUMAN_REVIEW
+S-22,gpt-6,02,createProjectWithValidTitle,tests/gpt-6/run-02.java#createProjectWithValidTitle,HIGH,api_error_contract_status_200_201,POST /api/project,PENDING_HUMAN_REVIEW
+S-23,gpt-6,03,createProjectWithValidTitle,tests/gpt-6/run-03.java#createProjectWithValidTitle,HIGH,api_error_contract_status_200_201,POST /api/project,PENDING_HUMAN_REVIEW
+S-24,gpt-6,04,createProjectWithValidTitle,tests/gpt-6/run-04.java#createProjectWithValidTitle,HIGH,api_error_contract_status_200_201,POST /api/project,PENDING_HUMAN_REVIEW
+S-25,gpt-6,01,createProjectWithMinimumLengthTitle,tests/gpt-6/run-01.java#createProjectWithMinimumLengthTitle,HIGH,assertion_error,POST /api/project,PENDING_HUMAN_REVIEW
+S-26,gpt-6,01,createProjectWithMaximumLengthTitle,tests/gpt-6/run-01.java#createProjectWithMaximumLengthTitle,HIGH,assertion_error,POST /api/project,PENDING_HUMAN_REVIEW
+S-27,gpt-6,01,createProjectWithEmptyTitle,tests/gpt-6/run-01.java#createProjectWithEmptyTitle,HIGH,assertion_error,POST /api/project,PENDING_HUMAN_REVIEW
+S-28,gpt-6,01,createProjectWithOptionalCodeAtMaximumLength,tests/gpt-6/run-01.java#createProjectWithOptionalCodeAtMaximumLength,HIGH,assertion_error,POST /api/project,PENDING_HUMAN_REVIEW
+S-29,gpt-6,01,createProjectWithTitleExceedingMaximumLength,tests/gpt-6/run-01.java#createProjectWithTitleExceedingMaximumLength,LOW,,POST /api/project,PENDING_HUMAN_REVIEW
+S-30,gpt-6,01,createProjectWithoutTitle,tests/gpt-6/run-01.java#createProjectWithoutTitle,LOW,,POST /api/project,PENDING_HUMAN_REVIEW
+S-31,gpt-6,01,createProjectWithNullTitle,tests/gpt-6/run-01.java#createProjectWithNullTitle,LOW,,POST /api/project,PENDING_HUMAN_REVIEW
+S-32,gpt-6,01,createProjectWithCodeExceedingMaximumLength,tests/gpt-6/run-01.java#createProjectWithCodeExceedingMaximumLength,LOW,,POST /api/project,PENDING_HUMAN_REVIEW
+S-33,gpt-6,01,createProjectWithEmptyCode,tests/gpt-6/run-01.java#createProjectWithEmptyCode,HIGH,assertion_error,POST /api/project,PENDING_HUMAN_REVIEW
+S-34,gpt-6,01,createProjectWithOptionalIdx,tests/gpt-6/run-01.java#createProjectWithOptionalIdx,HIGH,assertion_error,POST /api/project,PENDING_HUMAN_REVIEW
+S-35,gpt-6,01,getProjectUsingValidCode,tests/gpt-6/run-01.java#getProjectUsingValidCode,HIGH,assertion_error,GET /api/project/{code},PENDING_HUMAN_REVIEW
+S-36,gpt-6,01,getProjectUsingNonexistentCode,tests/gpt-6/run-01.java#getProjectUsingNonexistentCode,LOW,,GET /api/project/{code},PENDING_HUMAN_REVIEW
+S-37,gpt-6,01,getProjectUsingEmptyCode,tests/gpt-6/run-01.java#getProjectUsingEmptyCode,LOW,,GET /api/project/{code},PENDING_HUMAN_REVIEW
+S-38,gpt-6,01,getProjectUsingShortCode,tests/gpt-6/run-01.java#getProjectUsingShortCode,LOW,,GET /api/project/{code},PENDING_HUMAN_REVIEW
+S-39,gpt-6,01,getProjectUsingLongCode,tests/gpt-6/run-01.java#getProjectUsingLongCode,LOW,,GET /api/project/{code},PENDING_HUMAN_REVIEW
+S-40,gpt-6,01,updateProjectWithValidTitle,tests/gpt-6/run-01.java#updateProjectWithValidTitle,HIGH,assertion_error,PUT /api/project/{code},PENDING_HUMAN_REVIEW
