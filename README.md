@@ -1,6 +1,6 @@
 # Avaliação Experimental de Modelos de Linguagem na Geração Automática de Testes para APIs RESTful
 
-Infraestrutura reproduzível para uma Iniciação Científica da UNICAMP que compara, sob o mesmo prompt e a mesma especificação OpenAPI, testes de integração black-box gerados por `gemini-3.6-flash` e `gpt-5.6-luna`.
+Infraestrutura reproduzível para uma Iniciação Científica da UNICAMP que compara, sob o mesmo prompt e a mesma especificação OpenAPI, testes de integração black-box gerados por `gemini-3.6-think` e `gpt-5.6-sol`.
 
 ## Escopo e estado atual
 
@@ -55,15 +55,15 @@ API_RESTART_COMMAND='sh work/pilot/restart_api.sh' \
 python3 scripts/summarize.py --input work/pilot/summary.csv --output work/pilot/medians.csv
 ```
 
-Antes de cada geração oficial, execute `python3 scripts/verify_prompt.py`. A coleta manual só deve começar depois da confirmação humana de que `gemini-3.6-flash` está selecionado na interface Gemini e `gpt-5.6-luna` na interface ChatGPT Work.
+Antes de cada geração oficial, execute `python3 scripts/verify_prompt.py`. A coleta manual só deve começar depois da confirmação humana de que Google Gemini 3.6 Think (`gemini-3.6-think`) está selecionado na interface Gemini e OpenAI GPT-5.6 Sol (`gpt-5.6-sol`) na interface ChatGPT Work.
 
 ## Coleta manual
 
 Antes da coleta, confirme a disponibilidade e seleção exata dos dois modelos. Para cada conversa nova, cole o conteúdo de `prompts/generation.txt`, salve a primeira resposta integralmente em:
 
 ```text
-responses/gemini-3.6-flash/run-01.txt
-responses/gpt-5.6-luna/run-01.txt
+responses/gemini-3.6-think/run-01.txt
+responses/gpt-5.6-sol/run-01.txt
 ```
 
 O prompt não deve ser alterado após a primeira geração oficial. Registre metadados no arquivo `.metadata.json` correspondente, usando o modelo de [`responses/metadata.example.json`](responses/metadata.example.json) e o hash produzido pelo script.
@@ -71,8 +71,8 @@ O prompt não deve ser alterado após a primeira geração oficial. Registre met
 ## Extrair e executar um conjunto
 
 ```bash
-python3 scripts/extract_java.py --model gemini-3.6-flash --run 01
-API_BASE_URL=http://localhost:8080 python3 scripts/run_one.py --model gemini-3.6-flash --run 01
+python3 scripts/extract_java.py --model gemini-3.6-think --run 01
+API_BASE_URL=http://localhost:8080 python3 scripts/run_one.py --model gemini-3.6-think --run 01
 python3 scripts/run_all.py --api-restart-command 'sh /caminho/para/restart-sut.sh'
 python3 scripts/summarize.py
 ```
