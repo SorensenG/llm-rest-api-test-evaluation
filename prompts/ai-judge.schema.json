@@ -3,7 +3,8 @@
   "additionalProperties": false,
   "required": ["q1", "q4", "justification", "evidence", "confidence", "ambiguity", "needs_human_review"],
   "properties": {
-    "q1": {"type":"object"}, "q4": {"type":"object"},
+    "q1": {"type":"object", "additionalProperties":false, "required":["syntactically_valid","executable","approved","failure_category","contract_assessment"], "properties":{"syntactically_valid":{"type":"string"},"executable":{"type":"string"},"approved":{"type":"string"},"failure_category":{"type":"string"},"contract_assessment":{"type":"string"}}},
+    "q4": {"type":"object", "additionalProperties":false, "required":["positive","negative","boundary","multi_endpoint"], "properties":{"positive":{"type":"string"},"negative":{"type":"string"},"boundary":{"type":"string"},"multi_endpoint":{"type":"string"}}},
     "justification": {"type":"string"}, "evidence": {"type":"array", "items":{"type":"string"}},
     "confidence": {"enum":["HIGH","MEDIUM","LOW"]}, "ambiguity": {"enum":["NONE","PRESENT"]},
     "needs_human_review": {"const":true}
